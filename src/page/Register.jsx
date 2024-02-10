@@ -17,8 +17,6 @@ export default function Register() {
     imageprofile: "",
   });
 
-  useEffect(() => {}, []);
-
   const hdlChange = (e) => {
     setInput((prv) => ({ ...prv, [e.target.name]: e.target.value }));
   };
@@ -27,7 +25,7 @@ export default function Register() {
     e.preventDefault();
     const rs = await axios.post("http://localhost:8112/auth/register", input);
     console.log(rs);
-    if(rs.status === 201){
+    if (rs.status === 201) {
       alert("ลงทะเบียนสำเร็จ");
     }
   };
