@@ -1,56 +1,144 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import imgDog from '../assets/image (18).png'
+import imgDog from "../assets/image (18).png";
 import Nav from "../nav/Nav";
+import axios from "axios";
 
 export default function Register() {
+  const [input, setInput] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    phone: "",
+    identityNumber: "",
+    address: "",
+    zipcode: "",
+    imageprofile: "",
+  });
+
+  useEffect(() => {}, []);
+
+  const hdlChange = (e) => {
+    setInput((prv) => ({ ...prv, [e.target.name]: e.target.value }));
+  };
+
+  const hdlSubmit = async (e) => {
+    e.preventDefault();
+    const rs = await axios.post("http://localhost:8112/auth/register", input);
+    console.log(rs);
+    if(rs.status === 201){
+      alert("ลงทะเบียนสำเร็จ");
+    }
+  };
   return (
     <>
       <Nav />
       <div className="flex flex-row justify-center mt-[60px] ">
-        <div className="shadow-md  w-[500px] h-[669px]" >
-          <img src={imgDog} alt="" className="  w-[500px] h-[669px] bg-cover bg-center" />
+        <div className="shadow-md  w-[500px] h-[669px]">
+          <img
+            src={imgDog}
+            alt=""
+            className="bg-center rounded-ful bg-clip-border"
+          />
         </div>
         <div className="flex flex-col justify-center gap-[20px] w-[500px] h-[669px] bg-gray-300 shadow-md ">
           <div>Register</div>
           <div>
-            <form action="">
-              <input type="text" id="firstname" placeholder="Firstname" />
+            <form onSubmit={hdlSubmit}>
+              <input
+                type="text"
+                placeholder="Firstname"
+                name="firstName"
+                value={input.firstName}
+                onChange={hdlChange}
+                required
+              />
 
-              <input type="text" id="lastname" placeholder="Lastname" />
+              <input
+                type="text"
+                placeholder="Lastname"
+                name="lastName"
+                value={input.lastName}
+                onChange={hdlChange}
+              />
               <br />
-              <input type="email" id="email" placeholder="email" />
+              <input
+                type="email"
+                placeholder="email"
+                name="email"
+                value={input.email}
+                onChange={hdlChange}
+              />
               <br />
-              <input type="password" id="password" placeholder="password" />
+              <input
+                type="password"
+                placeholder="password"
+                name="password"
+                value={input.password}
+                onChange={hdlChange}
+              />
+              <br />
+              {/* <input
+                type="password"
+                placeholder="password2"
+                name="password2"
+                value={input.password2}
+                onChange={hdlChange}
+              /> */}
+              {/* <br /> */}
+              <input
+                type="text"
+                name="phone"
+                placeholder="phone"
+                value={input.phone}
+                onChange={hdlChange}
+              />
+              <br />
+              <input
+                type="number"
+                name="identityNumber"
+                placeholder="identityNumber"
+                value={input.identityNumber}
+                onChange={hdlChange}
+              />
               <br />
               <input
                 type="text"
                 name="address"
-                id="address"
                 placeholder="address"
+                value={input.address}
+                onChange={hdlChange}
               />
               <br />
-              <select id="province" name="province">
-                <option value="">-- เลือกจังหวัด --</option>
-                <option value="1">กรุงเทพมหานคร</option>
-                <option value="2">นนทบุรี</option>
-                <option value="3">สมุทรปราการ</option>
-              </select>
-              <select id="city" name="city" >
-                <option value="">-- เลือกเมือง --</option>
-                <option value="1">ร้อยเอ็ด</option>
-              </select>
-              <br />
-              <input type="text" id="zipcod" placeholder="Zipcode" />
-              <br />
-              <input type="file" name="" id="" />
+              <input
+                type="number"
+                name="zipcode"
+                placeholder="zipcode"
+                value={input.zipcode}
+                onChange={hdlChange}
+              />
+              <input
+                type="text"
+                name="city"
+                placeholder="city"
+                value={input.city}
+                onChange={hdlChange}
+              />
+              <input
+                type="text"
+                name="district"
+                placeholder="district"
+                value={input.district}
+                onChange={hdlChange}
+              />
               <br />
               <button className="btn btn-accent">Register</button>
             </form>
           </div>
           <hr />
           <div>
-          You have an account ?<Link to="/login">Login</Link>{" "}
+            You have an account ?<Link to="/login">Login</Link>{" "}
           </div>
         </div>
       </div>
