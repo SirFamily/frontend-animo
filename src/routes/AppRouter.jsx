@@ -6,7 +6,7 @@ import Login from "../page/Login";
 import Register from "../page/Register";
 
 import HostList from "../page/Booking/HostList";
-import Dashbord from "../page/Dashbord/Dashbord";
+import Dashbord from "../page/dashbord/dashbord";
 
 
 
@@ -39,6 +39,7 @@ const userRouter = createBrowserRouter([
       element: (
         <>
           <Nav />
+
           <Outlet />
         </>
       ),

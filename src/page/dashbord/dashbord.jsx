@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Dashbord() {
+export default function dashbord() {
   return (
     <div>
        <h1 className="text-center text-3xl font-bold mt-20">Dashboard</h1>
