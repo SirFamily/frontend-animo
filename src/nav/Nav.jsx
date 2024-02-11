@@ -35,7 +35,7 @@ export default function Nav() {
     {
       text: (
         <>
-          <div className="flex flex-row justify-around " >Profile {user?.id ? user.firstName : 'Guest'}</div> 
+          <Link to="/dashdord"><div className="flex flex-row justify-around " >Profile {user?.id ? user.firstName : 'Guest'}</div></Link> 
         </>
       ),
     },

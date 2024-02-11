@@ -6,6 +6,9 @@ import Login from "../page/Login";
 import Register from "../page/Register";
 
 import HostList from "../page/Booking/HostList";
+import Dashbord from "../page/Dashbord/Dashbord";
+
+
 
 
 
@@ -36,10 +39,13 @@ const userRouter = createBrowserRouter([
       element: (
         <>
           <Nav />
-          <HostList />
           <Outlet />
         </>
       ),
+      children: [
+        { index: true, element: <HostList /> },
+        { path: '/dashdord', element: <Dashbord />}
+      ]
     },
   ]);
 
