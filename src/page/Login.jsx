@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import useAuth from "../hooks/useAuth";
 import catImg from "../assets/image (14).png";
-import Nav from "../nav/Nav";
+
 
 function Login() {
   const { setUser } = useAuth()

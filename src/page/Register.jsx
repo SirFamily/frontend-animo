@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import imgDog from "../assets/image (18).png";
-import Nav from "../nav/Nav";
 import axios from "axios";
 
 export default function Register() {
