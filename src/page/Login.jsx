@@ -1,17 +1,17 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import useAuth from "../hooks/useAuth";
 import catImg from "../assets/image (14).png";
 import Nav from "../nav/Nav";
 
 function Login() {
-  const [user, setUser] = useAuth();
+  const { setUser } = useAuth()
   const [input, setInput] = useState({
     email: "",
     password: "",
   });
-
+  const navigate = useNavigate();
   const hdlChange = (e) => {
     setInput((prv) => ({ ...prv, [e.target.name]: e.target.value }));
   };
@@ -31,6 +31,7 @@ function Login() {
       setUser(rs1.data);
       if (rs.status === 200) {
         alert("ล็อกอินสำเร็จ");
+        navigate('/');
       }
     } catch (err) {
       console.log(err);

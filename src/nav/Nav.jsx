@@ -1,19 +1,20 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import useAuth from '../hooks/useAuth'
 
 export default function Nav() {
-  return (
-    <>
-      <nav className="flex flex-row justify-around mt-[50px]">
-        <div>
-          <Link to="/" className="text-black text-3xl font-bold font-sans">
-            <div>
-              <span className="text-teal-200">A</span>nimo
-            </div>
-          </Link>
-        </div>
+  const { user, logout } = useAuth(); 
+  const navigate = useNavigate();
 
-        <div>
+  const hdlLogout = () => {
+    logout();
+    navigate('/');
+  };
+
+  const guestNav = [
+    {
+      text: (
+        <>
           <Link to="/login" className="">
             Login
           </Link>
@@ -25,6 +26,48 @@ export default function Nav() {
           >
             Register
           </Link>
+        </>
+      ),
+    },
+  ];
+
+  const userNav = [
+    {
+      text: (
+        <>
+          <div className="flex flex-row justify-around " >Profile {user?.id ? user.firstName : 'Guest'}</div> 
+        </>
+      ),
+    },
+  ];
+
+  return (
+    <>
+      <nav className="flex flex-row justify-around mt-[50px]">
+        <div>
+          <Link to="/" className="text-black text-3xl font-bold font-sans">
+            <div>
+              <span className="text-teal-200">A</span>nimo
+            </div>
+          </Link>
+        </div>
+
+        <div className="flex flex-row justify-around gap-4">
+          {user?.id ? (
+            <>
+              {userNav.map((item, index) => (
+                <div key={index}>{item.text}</div>
+              ))}
+              <div><button onClick={hdlLogout} className="">
+                Logout
+              </button></div>
+              
+            </>
+          ) : (
+            guestNav.map((item, index) => (
+              <div key={index}>{item.text}</div>
+            ))
+          )}
         </div>
       </nav>
     </>
