@@ -23,6 +23,10 @@ export default function Register() {
 
   const hdlSubmit = async (e) => {
     e.preventDefault();
+    if (input.password !== input.password2) {
+      alert("Passwords do not match");
+      return;
+    }
     const rs = await axios.post("http://localhost:8112/auth/register", input);
     console.log(rs);
     if (rs.status === 201) {
@@ -31,7 +35,7 @@ export default function Register() {
   };
   return (
     <>
-      <Nav />
+
       <div className="flex flex-row justify-center mt-[60px] ">
         <div className="shadow-md  w-[500px] h-[669px]">
           <img
@@ -77,14 +81,14 @@ export default function Register() {
                 onChange={hdlChange}
               />
               <br />
-              {/* <input
+              <input
                 type="password"
-                placeholder="password2"
+                placeholder="Confirm password"
                 name="password2"
                 value={input.password2}
                 onChange={hdlChange}
-              /> */}
-              {/* <br /> */}
+              />
+              <br />
               <input
                 type="text"
                 name="phone"

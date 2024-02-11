@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import useAuth from "../hook/useAuth";
+import useAuth from "../hooks/useAuth";
 import catImg from "../assets/image (14).png";
 import Nav from "../nav/Nav";
 
@@ -38,7 +38,6 @@ function Login() {
   };
   return (
     <>
-      <Nav />
       <div className="flex flex-row justify-center">
         <div className="flex flex-col justify-center gap-[20px] w-80 h-96 bg-gray-300 shadow-md ">
           <div>Login</div>

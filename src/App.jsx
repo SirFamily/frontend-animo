@@ -1,38 +1,19 @@
-import { useState } from "react";
-import "./App.css";
-import Nav from "./nav/Nav";
+import useAuth from "./hooks/useAuth";
+import AppRouter from "./routes/AppRouter";
 
 function App() {
+  const {loading} = useAuth()
+
+  if(loading) {
+    return (
+      <p className="text-4xl text-primary">Loading..</p>
+    )
+  }
 
   return (
-    <>
-      <Nav />
-      <form action="">
-        <div>
-          <div>Where you go ?</div>
-          <input type="text" />
-        </div>
-        <div className="flex flex-row">
-          <div>
-            <div>Check in</div>
-            <input type="text" />
-          </div>
-          <div>
-            <div>Check out</div>
-            <input type="text" />
-          </div>
-        </div>
-        <div>
-          <div>Guest</div>
-          <select id="pet">
-            <option value="">เจ้าขาว</option>
-            <option value="">ขุนเดช</option>
-          </select>
-        </div>
-        <button className="btn btn-accent">Accent</button>
-      </form>
-      <div>ค้นหาสิ่งที่ดีที่สุดสำหรับสัตว์เลี้ยงของคุณ</div>
-    </>
+    <div className="min-h-screen">
+      <AppRouter />
+    </div>
   );
 }
 
