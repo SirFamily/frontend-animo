@@ -6,7 +6,8 @@ import Login from "../page/Login";
 import Register from "../page/Register";
 
 import HostList from "../page/Booking/HostList";
-import Dashbord from "../page/dashbord/dashbord";
+import Dashbord from "../page/dashbord/dashboard";
+import DashbordHost from "../page/dashbord/dashboardHost";
 
 
 
@@ -45,7 +46,10 @@ const userRouter = createBrowserRouter([
       ),
       children: [
         { index: true, element: <HostList /> },
-        { path: '/dashdord', element: <Dashbord />}
+        { path: '/dashboard/pet', element: <Dashbord />,},
+        { path: '/dashboard/host', element: <DashbordHost />,},
+          
+    
       ]
     },
   ]);

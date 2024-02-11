@@ -25,12 +25,19 @@
     background: #FFF;
 }
 
+.textMenu{
+font-size: 16px;
+font-weight: bold;
+}
+
 .listMenu{
     display: flex;
 width: 165px;
 padding: 14px 21px;
 align-items: center;
 gap: 10px;
+transition: ease  0.3s;
+cursor: pointer;
 }
 
 .bord {
@@ -103,4 +110,8 @@ background: linear-gradient(0deg, rgba(0, 0, 0, 0.50) 0%, rgba(0, 0, 0, 0.00) 10
 .listPet:hover{
     transform: scale(1.03);
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
+}
+
+.listMenu:hover{
+    background-color:#A4D9E0;
 }

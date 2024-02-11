@@ -1,15 +1,17 @@
 import React from "react";
 import DashCss from "./dashbordCss/DashCss.module.css";
 import img from "../../assets/image (14).png";
-import catIcon from '../../assets/cat.svg'
+import catIcon from "../../assets/cat.svg";
+
+import Menu from "./menu/menu";
+
 export default function dashbord() {
   return (
     <div className={DashCss.container}>
       <div className={DashCss.containerDash}>
-        <div className={DashCss.menu}>
-            <div className={DashCss.listMenu}>
-            </div>
-        </div>
+        {/* ส่วนของเมนูdashboard */}
+        <Menu />
+        {/* สิ่นสุดส่วนของเมนูdashboard */}
         <div className={DashCss.bord}>
           <div className={DashCss.inBord}>
             <div>
@@ -20,7 +22,6 @@ export default function dashbord() {
               <div className={DashCss.line}></div>
             </div>
             <div className={DashCss.boxListPet}>
-
               <div className={DashCss.listPet}>
                 <div
                   className={DashCss.descPet}
@@ -62,8 +63,6 @@ export default function dashbord() {
                   <div className={DashCss.text}>ข้าวเจ้า</div>
                 </div>
               </div>
-
-
             </div>
           </div>
         </div>
