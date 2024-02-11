@@ -15,13 +15,16 @@ export default function menu() {
             <div className={DashCss.textMenu}>Host</div>
           </div>
         </Link>
-
-        <div className={DashCss.listMenu}>
-          <div className={DashCss.textMenu}>Booking</div>
-        </div>
-        <div className={DashCss.listMenu}>
-          <div className={DashCss.textMenu}>Setting</div>
-        </div>
+        <Link to="/dashboard/booking">
+          <div className={DashCss.listMenu}>
+            <div className={DashCss.textMenu}>Booking</div>
+          </div>
+        </Link>
+        <Link to="/dashboard/setting">
+          <div className={DashCss.listMenu}>
+            <div className={DashCss.textMenu}>Setting</div>
+          </div>
+        </Link>
       </div>
     </>
   );

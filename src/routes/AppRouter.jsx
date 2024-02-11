@@ -8,6 +8,7 @@ import Register from "../page/Register";
 import HostList from "../page/Booking/HostList";
 import Dashbord from "../page/dashbord/dashboard";
 import DashbordHost from "../page/dashbord/dashboardHost";
+import DashboardBooking from "../page/dashbord/dashboardBooking";
 
 
 
@@ -48,6 +49,7 @@ const userRouter = createBrowserRouter([
         { index: true, element: <HostList /> },
         { path: '/dashboard/pet', element: <Dashbord />,},
         { path: '/dashboard/host', element: <DashbordHost />,},
+        { path: '/dashboard/booking', element: <DashboardBooking />,},
           
     
       ]
