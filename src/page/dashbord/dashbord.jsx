@@ -1,10 +1,73 @@
-import React from 'react'
-
+import React from "react";
+import DashCss from "./dashbordCss/DashCss.module.css";
+import img from "../../assets/image (14).png";
+import catIcon from '../../assets/cat.svg'
 export default function dashbord() {
   return (
-    <div>
-       <h1 className="text-center text-3xl font-bold mt-20">Dashboard</h1>
-      <section class="flex flex-col justify-start max-w-screen-lg mx-auto"> </section>
+    <div className={DashCss.container}>
+      <div className={DashCss.containerDash}>
+        <div className={DashCss.menu}>
+            <div className={DashCss.listMenu}>
+            </div>
+        </div>
+        <div className={DashCss.bord}>
+          <div className={DashCss.inBord}>
+            <div>
+              <h1>Welcome to the admin panel!</h1>
+              <p>
+                Here you can manage your website, add new posts and much more.
+              </p>
+              <div className={DashCss.line}></div>
+            </div>
+            <div className={DashCss.boxListPet}>
+
+              <div className={DashCss.listPet}>
+                <div
+                  className={DashCss.descPet}
+                  style={{
+                    background: `linear-gradient(0deg, rgba(0, 0, 0, 0.50) 0%, rgba(0, 0, 0, 0.00) 100%), url('https://e1.pxfuel.com/desktop-wallpaper/433/825/desktop-wallpaper-cool-spongebob.jpg') lightgray 50% / cover no-repeat`,
+                  }}
+                >
+                  <div className={DashCss.text}>ข้าวเจ้า</div>
+                </div>
+              </div>
+              <div className={DashCss.listPet}>
+                <div
+                  className={DashCss.descPet}
+                  style={{
+                    background: `linear-gradient(0deg, rgba(0, 0, 0, 0.50) 0%, rgba(0, 0, 0, 0.00) 100%), url('https://e1.pxfuel.com/desktop-wallpaper/433/825/desktop-wallpaper-cool-spongebob.jpg') lightgray 50% / cover no-repeat`,
+                  }}
+                >
+                  <div className={DashCss.text}>ข้าวเจ้า</div>
+                </div>
+              </div>
+
+              <div className={DashCss.listPet}>
+                <div
+                  className={DashCss.descPet}
+                  style={{
+                    background: `linear-gradient(0deg, rgba(0, 0, 0, 0.50) 0%, rgba(0, 0, 0, 0.00) 100%), url('https://e1.pxfuel.com/desktop-wallpaper/433/825/desktop-wallpaper-cool-spongebob.jpg') lightgray 50% / cover no-repeat`,
+                  }}
+                >
+                  <div className={DashCss.text}>ข้าวเจ้า</div>
+                </div>
+              </div>
+              <div className={DashCss.listPet}>
+                <div
+                  className={DashCss.descPet}
+                  style={{
+                    background: `linear-gradient(0deg, rgba(0, 0, 0, 0.50) 0%, rgba(0, 0, 0, 0.00) 100%), url('https://e1.pxfuel.com/desktop-wallpaper/433/825/desktop-wallpaper-cool-spongebob.jpg') lightgray 50% / cover no-repeat`,
+                  }}
+                >
+                  <div className={DashCss.text}>ข้าวเจ้า</div>
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  )
+  );
 }
