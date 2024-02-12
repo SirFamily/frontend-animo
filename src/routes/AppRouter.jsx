@@ -6,7 +6,7 @@ import Login from "../page/Login";
 import Register from "../page/Register";
 
 import HostList from "../page/Booking/HostList";
-import Dashbord from "../page/dashbord/dashboard";
+import Dashbord from "../page/dashbord/dashboardPet";
 import DashbordHost from "../page/dashbord/dashboardHost";
 import DashboardBooking from "../page/dashbord/dashboardBooking";
 
