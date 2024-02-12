@@ -11,13 +11,20 @@ export default function Register() {
     password: "",
     phone: "",
     identityNumber: "",
-    address: "",
     zipcode: "",
+    address: "",
+    city: "",
+    district: "",
     imageprofile: "",
+    avatar: null,
   });
 
   const hdlChange = (e) => {
     setInput((prv) => ({ ...prv, [e.target.name]: e.target.value }));
+  };
+
+  const hdlFileChange = (e) => {
+    setInput((prv) => ({ ...prv, avatar: e.target.files[0] }));
   };
 
   const hdlSubmit = async (e) => {
@@ -26,15 +33,39 @@ export default function Register() {
       alert("Passwords do not match");
       return;
     }
-    const rs = await axios.post("http://localhost:8112/auth/register", input);
-    console.log(rs);
-    if (rs.status === 201) {
-      alert("ลงทะเบียนสำเร็จ");
+    
+    const formData = new FormData();
+    formData.append("firstName", input.firstName);
+    formData.append("lastName", input.lastName);
+    formData.append("email", input.email);
+    formData.append("password", input.password);
+    formData.append("phone", input.phone);
+    formData.append("identityNumber", input.identityNumber);
+    formData.append("address", input.address);
+    formData.append("zipcode", input.zipcode);
+    formData.append("city", input.city);
+    formData.append("district", input.district);
+    formData.append("avatar", input.avatar);
+    try {
+      const rs = await axios.post(
+        "http://localhost:8112/auth/register",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      console.log(rs);
+      if (rs.status === 201) {
+        alert("ลงทะเบียนสำเร็จ");
+      }
+    } catch (error) {
+      console.error("Registration failed", error);
     }
   };
   return (
     <>
-
       <div className="flex flex-row justify-center mt-[60px] ">
         <div className="shadow-md  w-[500px] h-[669px]">
           <img
@@ -46,7 +77,7 @@ export default function Register() {
         <div className="flex flex-col justify-center gap-[20px] w-[500px] h-[669px] bg-gray-300 shadow-md ">
           <div>Register</div>
           <div>
-            <form onSubmit={hdlSubmit}>
+            <form onSubmit={hdlSubmit} encType="multipart/form-data">
               <input
                 type="text"
                 placeholder="Firstname"
@@ -132,6 +163,13 @@ export default function Register() {
                 placeholder="district"
                 value={input.district}
                 onChange={hdlChange}
+              />
+              <br />
+              <input
+                type="file"
+                name="imageprofile"
+                accept="image/png,image/jpeg"
+                onChange={hdlFileChange}
               />
               <br />
               <button className="btn btn-accent">Register</button>

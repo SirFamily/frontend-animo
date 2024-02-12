@@ -1,7 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import "~@flaticon/flaticon-uicons/css/all/all";
 :root {
     display: flex;
     flex-direction: column;
