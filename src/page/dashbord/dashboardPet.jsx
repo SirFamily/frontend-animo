@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import DashCss from "./dashbordCss/DashCss.module.css";
 import ListPet from "./listpet/ListPet";
-import img from "../../assets/image (14).png";
-import catIcon from "../../assets/cat.svg";
 import Menu from "./menu/menu";
+import useAuth from "../../hooks/useAuth";
 
 export default function dashbord() {
+  const { user } = useAuth();
+  const id = user.id;
   return (
     <div className={DashCss.container}>
       <div className={DashCss.containerDash}>
@@ -19,7 +20,9 @@ export default function dashbord() {
                 <h1>Welcome to the pet panel!</h1>
                 <div className={DashCss.line}></div>
               </div>
-              <ListPet />
+              <div className={DashCss.boxListPet}>
+                <ListPet id={id} />
+              </div>
             </div>
           </div>
         </div>
