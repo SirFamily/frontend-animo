@@ -1,14 +1,24 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import DashCss from "../dashbordCss/DashCss.module.css";
+import ViewPet from "./ViewPet";
 
 const ListPet = (props) => {
   const { id } = props;
   const [petData, setPetData] = useState([]);
+  const [isPopupOpen, setPopupOpen] = useState(false);
+  const [selectedPet, setSelectedPet] = useState(null);
 
-  
+  const togglePopup = () => {
+    setPopupOpen(!isPopupOpen);
+  };
 
-  useEffect(() => {// ยังมีปัญหาการgetข้อมูลสองรอบ
+  const selectPet = (pet) => {
+    setSelectedPet(pet);
+    togglePopup();
+  };
+
+  useEffect(() => {
     const getData = async () => {
       try {
         const token = localStorage.getItem("token");
@@ -24,20 +34,19 @@ const ListPet = (props) => {
         console.error("Error fetching pet data:", error);
       }
     };
-  
+
     getData();
   }, []);
-  
 
   return (
     <>
       {petData.map((pet) => (
-        <div key={pet.id} className={DashCss.listPet}>
+        <div key={pet.id} className={DashCss.listPet} onClick={() => selectPet(pet)}>
           <div
             className={DashCss.descPet}
             style={{
               background: `linear-gradient(0deg, rgba(0, 0, 0, 0.50) 0%, rgba(0, 0, 0, 0.00) 100%), url(${
-                pet.img_pet ||
+                pet.urlImgPet ||
                 "https://t4.ftcdn.net/jpg/04/73/25/49/360_F_473254957_bxG9yf4ly7OBO5I0O5KABlN930GwaMQz.jpg"
               }) lightgray 50% / cover no-repeat`,
             }}
@@ -46,6 +55,7 @@ const ListPet = (props) => {
           </div>
         </div>
       ))}
+      {isPopupOpen && <ViewPet onClose={togglePopup} petData={selectedPet} />}
     </>
   );
 };
