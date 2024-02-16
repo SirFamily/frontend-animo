@@ -1,4 +1,4 @@
-import React,{ useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Menu from "./menu/menu";
 import DashCss from "./dashbordCss/DashCss.module.css";
 import ListPet from "./listpet/ListPet";
@@ -28,7 +28,6 @@ export default function dashbordHost() {
               </div>
               <div className={DashCss.boxListPet}>
                 <ListHost userId={id} />
-              
               </div>
             </div>
           </div>

@@ -2,13 +2,12 @@ import React, { useState } from "react";
 import ModelPopup from "../../../component/ModelPopup";
 import axios from "axios";
 export default function AddHost({ onClose }) {
-    const [input, setInput] = useState({
-        hostName: '',
-        location: '',
-        description: '',
-        propertyType: '',
-      });
-      
+  const [input, setInput] = useState({
+    hostName: "",
+    location: "",
+    description: "",
+    propertyType: "",
+  });
 
   const hdlChange = (e) => {
     setInput((prv) => ({ ...prv, [e.target.name]: e.target.value }));
@@ -20,13 +19,13 @@ export default function AddHost({ onClose }) {
 
   const hdlSubmit = async (e) => {
     e.preventDefault();
-   alert(input.hostName)
-   const formData = new FormData();
-   formData.append("hostName", input.hostName);
-   formData.append("location", input.location);
-   formData.append("description", input.description);
-   formData.append("propertyType", input.propertyType);
-   
+    alert(input.hostName);
+    const formData = new FormData();
+    formData.append("hostName", input.hostName);
+    formData.append("location", input.location);
+    formData.append("description", input.description);
+    formData.append("propertyType", input.propertyType);
+
     //formData.append("avatar", input.avatar);
     try {
       const token = localStorage.getItem("token");
@@ -52,7 +51,7 @@ export default function AddHost({ onClose }) {
   return (
     <div>
       <ModelPopup>
-        <form onSubmit={hdlSubmit} encType="multipart/form-data" >
+        <form onSubmit={hdlSubmit} encType="multipart/form-data">
           <h1>AddHost</h1>
 
           <input

@@ -31,9 +31,9 @@ export default function HostDetail({ onClose, host }) {
 
   const hdlSaveClick = async (e) => {
     e.preventDefault();
-        if (!confirm("Press a button")) {
-          return;
-        }
+    if (!confirm("Press a button")) {
+      return;
+    }
     const formData = new FormData();
     formData.append("hostName", editedHostData.hostName);
     formData.append("location", editedHostData.location);
@@ -129,7 +129,6 @@ export default function HostDetail({ onClose, host }) {
             <button onClick={onClose}>Close</button>
           </>
         )}
-
       </ModelPopup>
     </>
   );

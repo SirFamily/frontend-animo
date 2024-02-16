@@ -42,9 +42,9 @@ export default function ListHost(props) {
     togglePopup();
   };
 
-  const hdlAddHost = ()=>{
+  const hdlAddHost = () => {
     togglePopupA();
-  }
+  };
   return (
     <>
       {hostData.length > 0 ? (
@@ -77,7 +77,7 @@ export default function ListHost(props) {
           </div>
         </div>
       )}
-      {isPopupOpenA && <AddHost onClose={togglePopupA}/>}
+      {isPopupOpenA && <AddHost onClose={togglePopupA} />}
       {isPopupOpen && <HostDetail onClose={togglePopup} host={selectedHost} />}
     </>
   );
