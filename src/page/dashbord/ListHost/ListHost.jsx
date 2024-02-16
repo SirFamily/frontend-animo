@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from "react";
 import DashCss from "../dashbordCss/DashCss.module.css";
 import axios from "axios";
-//import HostDetails from "./HostDetails"; // Import the new component
+import HostDetail from "./HostDetail";
 
 export default function ListHost(props) {
   const {userId}= props
     const [hostData, setHostData] = useState([]);
+    const [isPopupOpen, setPopupOpen] = useState(false);
     const [selectedHost, setSelectedHost] = useState(null);
 
+    const togglePopup = () => {
+      setPopupOpen(!isPopupOpen);
+    };
     useEffect(() => {
         const getData = async () => {
             try {
@@ -29,17 +33,13 @@ export default function ListHost(props) {
     
     const handleHostClick = (host) => {
         setSelectedHost(host);
+        togglePopup();
     };
-
-    console.log(hostData)
-    if(hostData != null ){
-      console.log("1234564878",hostData)
-    }
     return (
         <>
             {hostData.length > 0 ? (
                 hostData.map((data) => (
-                    <div key={data.id} className={DashCss.listPet}>
+                    <div key={data.id} className={DashCss.listPet} onClick={() => handleHostClick(data)}>
                         <div
                             className={DashCss.descPet}
                             style={{
@@ -66,9 +66,9 @@ export default function ListHost(props) {
             )
             }
     
-            {/* {selectedHost && (
-                <HostDetails host={selectedHost} onClose={() => setSelectedHost(handleHostClick)} />
-            )} */}
+            {isPopupOpen && (
+                <HostDetail onClose={togglePopup} host={selectedHost}/>
+            )}
         </>
     );
 }

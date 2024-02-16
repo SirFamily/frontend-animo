@@ -142,7 +142,7 @@ export default function AddPet({ onClose }) {
             accept="image/png,image/jpeg"
             onChange={hdlFileChange}
           />
-          <button>Login</button>
+          <button>Add</button>
           <button onClick={onClose}>Close</button>
         </form>
       </ModelPopup>
