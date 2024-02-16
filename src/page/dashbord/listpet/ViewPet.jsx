@@ -71,7 +71,6 @@ export default function ViewPet({ onClose, petData }) {
         {
           headers: {
             Authorization: `Bearer ${token}`,
-            "Content-Type": "multipart/form-data",
           },
         }
       );
