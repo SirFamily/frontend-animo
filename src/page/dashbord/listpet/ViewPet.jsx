@@ -7,6 +7,7 @@ export default function ViewPet({ onClose, petData }) {
   const [isEditMode, setIsEditMode] = useState(false);
   const [editedPetData, setEditedPetData] = useState({ ...petData });
   const { user } = useAuth();
+  
   const hdlFileChange = (e) => {
     setInput((prv) => ({ ...prv, avatar: e.target.files[0] }));
   };
