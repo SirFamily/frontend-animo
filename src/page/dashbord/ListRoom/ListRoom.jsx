@@ -1,8 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import DashCss from '../dashbordCss/DashCss.module.css';
+import DashCss from "../dashbordCss/DashCss.module.css";
 import AddRoom from "./AddRoom";
-import RoomDetail from './RoomDetail'
+import RoomDetail from "./RoomDetail";
 
 export default function ListRoom(props) {
   const { userId } = props;
@@ -14,12 +14,12 @@ export default function ListRoom(props) {
   const [selectedRoomEdit, setSelectedRoomEdit] = useState(null);
 
   const togglePopup = (data) => {
-    setSelectedRoom(data)
+    setSelectedRoom(data);
     setPopupOpen(!isPopupOpen);
   };
 
   const togglePopupEdit = (data) => {
-    setSelectedRoomEdit(data)
+    setSelectedRoomEdit(data);
     setPopupOpenEdit(!isPopupOpenEdit);
   };
 
@@ -39,19 +39,20 @@ export default function ListRoom(props) {
           { headers: { Authorization: `Bearer ${token}` } }
         );
         setRoomData(response.data);
-      } catch (error) {
-    
-      }
+      } catch (error) {}
     };
-  
+
     getData();
   }, []);
-
 
   return (
     <>
       {roomData.map((data) => (
-        <div key={data.id} className={DashCss.listPet} onClick={()=>togglePopupEdit(data)}>
+        <div
+          key={data.id}
+          className={DashCss.listPet}
+          onClick={() => togglePopupEdit(data)}
+        >
           <div
             className={DashCss.descPet}
             style={{
@@ -66,17 +67,30 @@ export default function ListRoom(props) {
           </div>
         </div>
       ))}
-      {isHost !== null ? ( <div className={DashCss.listPet} onClick={()=>togglePopup(isHost)}>
-        <div className={DashCss.AddPet} style={{}}>
-          <div className={DashCss.add}>+</div>
-          <div className={DashCss.text} style={{ color: `#A4D9E0` }}>
-            เพิ่มห้องพัก
+      {isHost !== null ? (
+        <div className={DashCss.listPet} onClick={() => togglePopup(isHost)}>
+          <div className={DashCss.AddPet} style={{}}>
+            <div className={DashCss.add}>+</div>
+            <div className={DashCss.text} style={{ color: `#A4D9E0` }}>
+              เพิ่มห้องพัก
+            </div>
           </div>
         </div>
-      </div>):(<><div>ไม่มี</div></>)}
-     
-      {isPopupOpenEdit && <RoomDetail onClose={togglePopupEdit} selectedRoomEdit={selectedRoomEdit}/>}
-      {isPopupOpen && <AddRoom onClose={togglePopup} selectedHost={selectedRoom}/>}
+      ) : (
+        <>
+          <div>ไม่มี</div>
+        </>
+      )}
+
+      {isPopupOpenEdit && (
+        <RoomDetail
+          onClose={togglePopupEdit}
+          selectedRoomEdit={selectedRoomEdit}
+        />
+      )}
+      {isPopupOpen && (
+        <AddRoom onClose={togglePopup} selectedHost={selectedRoom} />
+      )}
     </>
   );
 }

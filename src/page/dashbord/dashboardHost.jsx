@@ -9,7 +9,6 @@ export default function dashbordHost() {
   const { user } = useAuth();
   const id = user.id;
 
-  
   return (
     <div className={DashCss.container}>
       <div className={DashCss.containerDash}>

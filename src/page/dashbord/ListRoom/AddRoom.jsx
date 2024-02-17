@@ -5,11 +5,11 @@ import axios from "axios";
 export default function AddRoom({ onClose, selectedHost }) {
   const [input, setInput] = useState({
     roomName: "",
-    description:"",
+    description: "",
     maximumAnimal: "",
     pricePerNight: "",
     typeRoom: "",
-    photos: []
+    photos: [],
   });
 
   const hdlChange = (e) => {
@@ -19,7 +19,7 @@ export default function AddRoom({ onClose, selectedHost }) {
   const hdlFileChange = (e) => {
     setInput((prev) => ({
       ...prev,
-      photos: [...prev.photos, ...e.target.files] 
+      photos: [...prev.photos, ...e.target.files],
     }));
   };
 
@@ -45,8 +45,8 @@ export default function AddRoom({ onClose, selectedHost }) {
         {
           headers: {
             Authorization: `Bearer ${token}`,
-            "Content-Type": "multipart/form-data"
-          }
+            "Content-Type": "multipart/form-data",
+          },
         }
       );
 
@@ -71,7 +71,7 @@ export default function AddRoom({ onClose, selectedHost }) {
           onChange={hdlChange}
           required
         />
-         <input
+        <input
           placeholder="description"
           type="text"
           name="description"
@@ -103,7 +103,7 @@ export default function AddRoom({ onClose, selectedHost }) {
           onChange={hdlChange}
           required
         />
-      <input
+        <input
           type="file"
           multiple // Allow multiple file selection
           accept="image/png,image/jpeg"
