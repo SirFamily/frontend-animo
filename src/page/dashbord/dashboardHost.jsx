@@ -1,18 +1,15 @@
 import React, { useState, useEffect } from "react";
 import Menu from "./menu/menu";
 import DashCss from "./dashbordCss/DashCss.module.css";
-import ListPet from "./listpet/ListPet";
 import useAuth from "../../hooks/useAuth";
 import ListHost from "./ListHost/ListHost";
+import ListRoom from "./ListRoom/ListRoom";
 
 export default function dashbordHost() {
   const { user } = useAuth();
   const id = user.id;
-  const [isPopupOpen, setPopupOpen] = useState(false);
 
-  const togglePopup = () => {
-    setPopupOpen(!isPopupOpen);
-  };
+  
   return (
     <div className={DashCss.container}>
       <div className={DashCss.containerDash}>
@@ -23,7 +20,7 @@ export default function dashbordHost() {
           <div className={DashCss.bord}>
             <div className={DashCss.inBord}>
               <div>
-                <h1>Welcome to the pet panel!</h1>
+                <h1>Welcome to the Host panel!</h1>
                 <div className={DashCss.line}></div>
               </div>
               <div className={DashCss.boxListPet}>
@@ -31,9 +28,20 @@ export default function dashbordHost() {
               </div>
             </div>
           </div>
+
+          <div className={DashCss.bord}>
+            <div className={DashCss.inBord}>
+              <div>
+                <h1>Welcome to the Room panel!</h1>
+                <div className={DashCss.line}></div>
+              </div>
+              <div className={DashCss.boxListPet}>
+                <ListRoom userId={id} />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      {/* {isPopupOpen && <AddPet onClose={togglePopup} />} */}
     </div>
   );
 }
