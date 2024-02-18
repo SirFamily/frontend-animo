@@ -7,6 +7,16 @@ import useAuth from '../../hooks/useAuth';
 export default function RoomDetailForBooking({ onClose, hostId, selectedRoom }) {
   const [selectedTags, setSelectedTags] = useState([]);
   const [isDataPet, setIsDataPet] = useState(null);
+  const [checkInDate, setCheckInDate] = useState('');
+  const [checkOutDate, setCheckOutDate] = useState('');
+  const [pricePerNight, setPricePerNight] = useState(0);
+  const [input , setInput] = useState({
+    checkInDate:"",   
+    checkOutDate:"",
+    totalPrice:"",
+    bookingDatetime:"",
+  });
+
   const { user } = useAuth();
   const userId = user.id;
 
@@ -27,6 +37,28 @@ export default function RoomDetailForBooking({ onClose, hostId, selectedRoom }) 
     getData();
   }, []);
 
+  useEffect(() => {
+    setPricePerNight(selectedRoom.pricePerNight || 0);
+  }, [selectedRoom.pricePerNight]);
+
+  const calculateDateDifference = () => {
+    if (checkInDate && checkOutDate) {
+      const checkIn = new Date(checkInDate);
+      const checkOut = new Date(checkOutDate);
+      const differenceInTime = checkOut.getTime() - checkIn.getTime();
+      const differenceInDays = differenceInTime / (1000 * 3600 * 24);
+      return differenceInDays;
+    }
+    return 0;
+  };
+
+  const calculateTotalPrice = () => {
+    const dateDifference = calculateDateDifference();
+    return dateDifference * pricePerNight;
+  };
+
+  
+
   const tagOptions = isDataPet
     ? isDataPet.map((pet) => ({ value: pet.id, label: pet.petName }))
     : [];
@@ -38,52 +70,97 @@ export default function RoomDetailForBooking({ onClose, hostId, selectedRoom }) 
     setSelectedTags(selectedOptions);
   };
 
+  const handleCheckInDateChange = (e) => {
+    setCheckInDate(e.target.value);
+  };
+
+  const handleCheckOutDateChange = (e) => {
+    setCheckOutDate(e.target.value);
+  };
+
+  const hdlSubmit = async (e) => {
+    e.preventDefault();
+    const formData ={
+      checkInDate:new Date(checkInDate),   
+      checkOutDate:new Date(checkOutDate),
+      totalPrice:calculateTotalPrice(),
+      selectedTags,
+    };
+    try {
+      const token = localStorage.getItem("token");
+      const response = await axios.post(
+        `http://localhost:8112/booking/${hostId}/${selectedRoom.id}`,
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      console.log(formData)
+      if (response.status === 200) {
+        alert("จองสำเร็จ");
+        onClose();
+      }
+    } catch (error) {
+    }
+  };
+
   return (
     <div>
       <ModelPopup>
-        <strong>{selectedRoom.roomName}</strong>
-        <div>
+        <form onSubmit={hdlSubmit}>
+          <strong>{selectedRoom.roomName}</strong>
+          <div>
+            <hr />
+            <div>รูปภาพ:</div>
+            {selectedRoom.rooms_img.map((img) => (
+              <img
+                key={img.id}
+                src={img.urlImg}
+                alt={`Room ${selectedRoom.roomName}`}
+                style={{ width: '100px', height: '100px', margin: '5px' }}
+              />
+            ))}
+          </div>
           <hr />
-          <div>รูปภาพ:</div>
-          {selectedRoom.rooms_img.map((img) => (
-            <img
-              key={img.id}
-              src={img.urlImg}
-              alt={`Room ${selectedRoom.roomName}`}
-              style={{ width: '100px', height: '100px', margin: '5px' }}
+          <div>{selectedRoom.description}</div>
+          <hr />
+          <div>TypeRoom: {selectedRoom.typeRoom}</div>
+          <div>MaximumAnimal: {selectedRoom.maximumAnimal}</div>
+          <div>Price/Night: {selectedRoom.pricePerNight}</div>
+          <hr />
+          <div>
+            <label>Select Tags:</label>
+            <Select
+              isMulti
+              options={tagOptions}
+              value={selectedTags}
+              onChange={handleTagChange}
+              placeholder="Select Pet"
             />
-          ))}
-        </div>
-        <hr />
-        <div>{selectedRoom.description}</div>
-        <hr />
-        <div>TypeRoom: {selectedRoom.typeRoom}</div>
-        <div>MaximumAnimal: {selectedRoom.maximumAnimal}</div>
-        <div>Price/Night: {selectedRoom.pricePerNight}</div>
-        <hr />
-        <div>
-          <label>Select Tags:</label>
-          <Select
-            isMulti
-            options={tagOptions}
-            value={selectedTags}
-            onChange={handleTagChange}
-            placeholder="Select Pet"
-          />
-        </div>
-        <hr />
-        <div>
-          <label htmlFor="checkInDate">checkInDate :</label>
-          <input type="date" name="checkInDate"  />
-          <label htmlFor="checkOutDate">checkOutDate :</label>
-          <input type="date" name="checkOutDate "  />
-        </div>
-        <hr />
-        <div>
-          สัตว์เลี้ยงที่เข้าพัก : {selectedTags.length}
-      
-        </div>
-        <button onClick={onClose}>Close</button>
+          </div>
+          <hr />
+          <div>
+            <label htmlFor="checkInDate">checkInDate :</label>
+            <input type="date" name="checkInDate" value={checkInDate} onChange={handleCheckInDateChange} />
+            <label htmlFor="checkOutDate">checkOutDate :</label>
+            <input type="date" name="checkOutDate" value={checkOutDate} onChange={handleCheckOutDateChange} />
+          </div>
+          <div>
+            สัตว์เลี้ยงที่เข้าพัก : {selectedTags.length}
+          </div>
+          <hr />
+          <div>
+            ระยะห่างของวัน: {calculateDateDifference()} วัน
+          </div>
+          <div>
+            ราคาทั้งหมด: {calculateTotalPrice()} บาท
+          </div>
+          <hr />
+          <button>Booking</button>
+          <button onClick={onClose}>Close</button>
+        </form>
       </ModelPopup>
     </div>
   );
