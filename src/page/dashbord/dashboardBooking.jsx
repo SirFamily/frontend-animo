@@ -1,7 +1,7 @@
 import React from 'react'
 import Menu from './menu/menu'
-import ListPet from './listpet/ListPet'
 import DashCss from './dashbordCss/DashCss.module.css'
+import ListBooking from './ListBooking/ListBooking'
 export default function dashboardBooking() {
   return (
     <div className={DashCss.container}>
@@ -16,17 +16,18 @@ export default function dashboardBooking() {
               <h1>Welcome to the Booking panel!</h1>
               <div className={DashCss.line}></div>
             </div>
-            <ListPet />
+            <ListBooking />
           </div>
         </div>
 
         <div className={DashCss.bord}>
           <div className={DashCss.inBord}>
             <div>
-              <h1>Welcome to the Booking history panel!</h1>
+              <h1>Welcome to the BookingHistory history panel!</h1>
               <div className={DashCss.line}></div>
             </div>
-            <ListPet />
+  
+  
           </div>
         </div>
       </div>
