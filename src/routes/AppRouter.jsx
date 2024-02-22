@@ -9,8 +9,8 @@ import HostList from "../page/Booking/HostList";
 import Dashbord from "../page/dashbord/dashboardPet";
 import DashbordHost from "../page/dashbord/dashboardHost";
 import DashboardBooking from "../page/dashbord/dashboardBooking";
-
-
+import DashboardBookingHistory from "../page/dashbord/dashboardBookingHistory";
+import DashboardSetting from "../page/dashbord/dashboardSetting";
 
 
 
@@ -50,7 +50,8 @@ const userRouter = createBrowserRouter([
         { path: '/dashboard/pet', element: <Dashbord />,},
         { path: '/dashboard/host', element: <DashbordHost />,},
         { path: '/dashboard/booking', element: <DashboardBooking />,},
-          
+        { path: '/dashboard/booking/history', element:<DashboardBookingHistory />,},
+        { path: '/dashboard/setting', element: <DashboardSetting />}
     
       ]
     },

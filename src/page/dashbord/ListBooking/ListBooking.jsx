@@ -18,7 +18,8 @@ export default function ListBooking() {
         const pendingBookings = response.data.filter(
             (booking) =>
               booking.status_booking.length > 0 &&
-              booking.status_booking[0].bookingStatus === "PENDING"
+              (booking.status_booking[0].bookingStatus === "PENDING"||
+              booking.status_booking[0].bookingStatus === "CONFIRMED")
           );
         setListBooking(pendingBookings);
       } catch (error) {

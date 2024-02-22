@@ -1,8 +1,9 @@
 import React from "react";
 import Menu from "./menu/menu";
 import DashCss from "./dashbordCss/DashCss.module.css";
-import ListBooking from "./ListBooking/ListBooking";
-export default function dashboardBooking() {
+import ListHistory from "./ListBookingHistory/ListHistory";
+
+export default function dashboardBookingHistory() {
   return (
     <div className={DashCss.container}>
       <div className={DashCss.containerDash}>
@@ -13,10 +14,10 @@ export default function dashboardBooking() {
           <div className={DashCss.bord}>
             <div className={DashCss.inBord}>
               <div>
-                <h1>Welcome to the Booking panel!</h1>
+                <h1>Welcome to the Profile panel!</h1>
                 <div className={DashCss.line}></div>
               </div>
-              <ListBooking />
+              <ListHistory />
             </div>
           </div>
         </div>

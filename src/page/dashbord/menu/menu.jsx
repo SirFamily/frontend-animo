@@ -20,6 +20,11 @@ export default function menu() {
             <div className={DashCss.textMenu}>Booking</div>
           </div>
         </Link>
+        <Link to="/dashboard/booking/history">
+          <div className={DashCss.listMenu}>
+            <div className={DashCss.textMenu}>History</div>
+          </div>
+        </Link>
         <Link to="/dashboard/setting">
           <div className={DashCss.listMenu}>
             <div className={DashCss.textMenu}>Setting</div>
