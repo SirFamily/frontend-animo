@@ -10,12 +10,6 @@ export default function RoomDetailForBooking({ onClose, hostId, selectedRoom }) 
   const [checkInDate, setCheckInDate] = useState('');
   const [checkOutDate, setCheckOutDate] = useState('');
   const [pricePerNight, setPricePerNight] = useState(0);
-  const [input , setInput] = useState({
-    checkInDate:"",   
-    checkOutDate:"",
-    totalPrice:"",
-    bookingDatetime:"",
-  });
 
   const { user } = useAuth();
   const userId = user.id;

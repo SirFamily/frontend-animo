@@ -5,8 +5,8 @@ import RoomDetailForBooking from "./RoomDetailForBooking";
 
 export default function HostDetailForBooking({ onClose, selectedHost }) {
   const [roomsData, setRoomsData] = useState([]);
-    const[ selectedRoom,setSelectedRoom]=useState(null);
-    const [isPopupOpen, setPopupOpen] = useState(false);
+  const [selectedRoom, setSelectedRoom] = useState(null);
+  const [isPopupOpen, setPopupOpen] = useState(false);
 
   const hostId = selectedHost.id;
   const togglePopup = (data) => {
@@ -59,7 +59,13 @@ export default function HostDetailForBooking({ onClose, selectedHost }) {
           </div>
         ))}
         <button onClick={onClose}>Close</button>
-        {isPopupOpen    && (<RoomDetailForBooking onClose={togglePopup} hostId={hostId} selectedRoom={selectedRoom}/>)}
+        {isPopupOpen && (
+          <RoomDetailForBooking
+            onClose={togglePopup}
+            hostId={hostId}
+            selectedRoom={selectedRoom}
+          />
+        )}
       </ModelPopup>
     </div>
   );
