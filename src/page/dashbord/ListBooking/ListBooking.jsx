@@ -49,7 +49,7 @@ export default function ListBooking() {
             <div>{`โรงแรม ${booking.host.hostName}`}</div>
             <div>{`ห้อง ${booking.room.roomName}`}</div>
             <div>{`จำนวน ${booking.pets_count_booking.length} ตัว`}</div>
-            <div>{`เข้าพัก ${booking.checkInDate} ถึง ${booking.checkOutDate}`}</div>
+              <div>{`เข้าพัก ${new Date(booking.checkInDate).toLocaleDateString()} ถึง ${new Date(booking.checkOutDate).toLocaleDateString()}`}</div>
       <div>Status: {booking.status_booking.length > 0 ? booking.status_booking[0].bookingStatus : 'N/A'}</div>
           </div>
         </div>
