@@ -2,6 +2,7 @@ import React from "react";
 import Menu from "./menu/menu";
 import DashCss from "./dashbordCss/DashCss.module.css";
 import ListHistory from "./ListBookingHistory/ListHistory";
+import ListRequestHistory from "./ListBookingHistory/ListRequestHistory";
 
 export default function dashboardBookingHistory() {
   return (
@@ -20,6 +21,18 @@ export default function dashboardBookingHistory() {
               <ListHistory />
             </div>
           </div>
+
+          <div className={DashCss.bord}>
+          <div className={DashCss.inBord}>
+            <div>
+              <h1>Welcome to the Room panel!</h1>
+              <div className={DashCss.line}></div>
+            </div>
+            <div className={DashCss.boxListPet}>
+             <ListRequestHistory />
+            </div>
+          </div>
+        </div>
         </div>
       </div>
     </div>

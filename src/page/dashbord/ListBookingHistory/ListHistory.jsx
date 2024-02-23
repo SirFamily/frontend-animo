@@ -19,7 +19,8 @@ export default function ListHistory() {
             (booking) =>
               (booking.status_booking.length > 0 &&
                 (booking.status_booking[0].bookingStatus === "CONPLETED" ||
-                  booking.status_booking[0].bookingStatus === "CANCELLED")) &&
+                  booking.status_booking[0].bookingStatus === "CANCELLED")) 
+                  ||
               booking.booking_history.length > 0 &&
               booking.booking_history[0].checkOutDatetime !== null
           );
@@ -31,7 +32,8 @@ export default function ListHistory() {
   
       getData();
     }, []);
-  
+
+   
   return (
     <div>
           <div>
@@ -58,6 +60,7 @@ export default function ListHistory() {
         </div>
       ))}
     </div>
+    
     </div>
   )
 }
