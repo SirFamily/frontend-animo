@@ -111,6 +111,9 @@ export default function HostDetail({ onClose, host }) {
           </>
         ) : (
           <>
+          {editedHostData.Host_img.map((img) => (
+              <img key={img.id} src={img.imgUrl} alt={`Host Image ${img.id}`} style={{width: `50px`}} />
+            ))}
             <div>{editedHostData.hostName}</div>
             <div>{editedHostData.location}</div>
             <div>{editedHostData.description}</div>

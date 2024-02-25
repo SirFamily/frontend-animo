@@ -2,16 +2,24 @@ import React, { useEffect, useState } from "react";
 import ModelPopup from "../../component/ModelPopup";
 import axios from "axios";
 import RoomDetailForBooking from "./RoomDetailForBooking";
+import ShowImagesHost from "./ShowImagesHost";
 
 export default function HostDetailForBooking({ onClose, selectedHost }) {
   const [roomsData, setRoomsData] = useState([]);
   const [selectedRoom, setSelectedRoom] = useState(null);
   const [isPopupOpen, setPopupOpen] = useState(false);
+  const [selectedHostImg, setSelectedHostImg] = useState(null);
+  const [isPopupOpenImg, setPopupOpenImg] = useState(false);
 
   const hostId = selectedHost.id;
   const togglePopup = (data) => {
     setSelectedRoom(data);
     setPopupOpen(!isPopupOpen);
+  };
+
+  const toggleImgPopup = (data) => {
+    setSelectedHostImg(data);
+    setPopupOpenImg(!isPopupOpenImg);
   };
   useEffect(() => {
     const getData = async () => {
@@ -37,12 +45,19 @@ export default function HostDetailForBooking({ onClose, selectedHost }) {
         <h1 className="text-center">Host Detail</h1>
         <hr />
         <p>Name : {selectedHost.hostName}</p>
+        <div onClick={() => toggleImgPopup(selectedHost.Host_img)}>
         <img
-          src="/assets/images/host_image.jpg"
-          alt=""
+          src={
+            selectedHost.Host_img && selectedHost.Host_img.length > 0
+              ? selectedHost.Host_img[0].imgUrl
+              : "/assets/images/host_image.jpg"
+          }
+          alt="host"
           width={300}
           height={250}
         />
+        </div>
+        
         {roomsData.map((data) => (
           <div key={data.id} onClick={() => togglePopup(data)}>
             <div
@@ -64,6 +79,12 @@ export default function HostDetailForBooking({ onClose, selectedHost }) {
             onClose={togglePopup}
             hostId={hostId}
             selectedRoom={selectedRoom}
+          />
+        )}
+        {isPopupOpenImg && (
+          <ShowImagesHost
+            onClose={toggleImgPopup}
+            selectedHostImg={selectedHostImg}
           />
         )}
       </ModelPopup>

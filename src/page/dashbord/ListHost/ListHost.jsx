@@ -54,15 +54,16 @@ export default function ListHost(props) {
             className={DashCss.listPet}
             onClick={() => handleHostClick(data)}
           >
-            <div
-              className={DashCss.descPet}
-              style={{
-                background: `linear-gradient(0deg, rgba(0, 0, 0, 0.50) 0%, rgba(0, 0, 0, 0.00) 100%), url(${
-                  data.description ||
-                  "https://t4.ftcdn.net/jpg/04/73/25/49/360_F_473254957_bxG9yf4ly7OBO5I0O5KABlN930GwaMQz.jpg"
-                }) lightgray 50% / cover no-repeat`,
-              }}
-            >
+             <div
+            className={DashCss.descPet}
+            style={{
+              background: `linear-gradient(0deg, rgba(0, 0, 0, 0.50) 0%, rgba(0, 0, 0, 0.00) 100%), url(${
+                data.Host_img.length > 0
+                  ? data.Host_img[0].imgUrl  // Use the first image URL
+                  : "https://t4.ftcdn.net/jpg/04/73/25/49/360_F_473254957_bxG9yf4ly7OBO5I0O5KABlN930GwaMQz.jpg"
+              }) lightgray 50% / cover no-repeat`,
+            }}
+          >
               <div className={DashCss.text}>{data.hostName}</div>
             </div>
           </div>
