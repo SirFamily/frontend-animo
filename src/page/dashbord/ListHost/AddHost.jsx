@@ -7,15 +7,19 @@ export default function AddHost({ onClose }) {
     location: "",
     description: "",
     propertyType: "",
+    photos: [],
   });
 
   const hdlChange = (e) => {
     setInput((prv) => ({ ...prv, [e.target.name]: e.target.value }));
   };
 
-  //   const hdlFileChange = (e) => {
-  //     setInput((prv) => ({ ...prv, avatar: e.target.files[0] }));
-  //   };
+  const hdlFileChange = (e) => {
+    setInput((prev) => ({
+      ...prev,
+      photos: [...prev.photos, ...e.target.files],
+    }));
+  };
 
   const hdlSubmit = async (e) => {
     e.preventDefault();
@@ -25,8 +29,12 @@ export default function AddHost({ onClose }) {
     formData.append("location", input.location);
     formData.append("description", input.description);
     formData.append("propertyType", input.propertyType);
+    formData.append("photos", input.photos);
 
-    //formData.append("avatar", input.avatar);
+    for (let i = 0; i < input.photos.length; i++) {
+      formData.append("photos", input.photos[i]);
+    }
+
     try {
       const token = localStorage.getItem("token");
       const rs = await axios.post(
@@ -87,13 +95,12 @@ export default function AddHost({ onClose }) {
             onChange={hdlChange}
           />
 
-          {/* <input
-            type="file"
-            src=""
-            alt=""
-            accept="image/png,image/jpeg"
-            onChange={hdlFileChange}
-          /> */}
+<input
+          type="file"
+          multiple 
+          accept="image/png,image/jpeg"
+          onChange={hdlFileChange}
+        />
           <button>Add</button>
           <button onClick={onClose}>Close</button>
         </form>
