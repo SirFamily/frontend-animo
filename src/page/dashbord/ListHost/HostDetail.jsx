@@ -5,6 +5,7 @@ import axios from "axios";
 export default function HostDetail({ onClose, host }) {
   const [isEditMode, setIsEditMode] = useState(false);
   const [editedHostData, setEditedHostData] = useState({ ...host });
+  const [isChecked, setIsChecked] = useState(false); // New state for the checkbo
 
   const hdlDelete = async () => {
     try {
@@ -39,6 +40,7 @@ export default function HostDetail({ onClose, host }) {
     formData.append("location", editedHostData.location);
     formData.append("description", editedHostData.description);
     formData.append("propertyType", editedHostData.propertyType);
+    formData.append("publish", editedHostData.publish);
     try {
       const token = localStorage.getItem("token");
       const rs = await axios.put(
@@ -71,6 +73,12 @@ export default function HostDetail({ onClose, host }) {
   const hdlChange = (e) => {
     setEditedHostData((prv) => ({ ...prv, [e.target.name]: e.target.value }));
   };
+
+  const hdlChangeCheckbox = () => {
+    // Update the state of editedHostData.publish when the checkbox changes
+    setEditedHostData((prev) => ({ ...prev, publish: !prev.publish }));
+  };
+
   return (
     <>
       <ModelPopup>
@@ -108,16 +116,34 @@ export default function HostDetail({ onClose, host }) {
               value={editedHostData.propertyType}
               onChange={hdlChange}
             />
+            <input
+              type="checkbox"
+              name="publish"
+              id="publish"
+              checked={editedHostData.publish}
+              onChange={hdlChangeCheckbox} // Handle checkbox change
+            />
+             <div style={{ color: editedHostData.publish ? "#00FF00" : "#FF0000" }}>
+          {editedHostData.publish ? "เผยแพร์" : "ไม่เผยแพร์"}
+        </div>
           </>
         ) : (
           <>
-          {editedHostData.Host_img.map((img) => (
-              <img key={img.id} src={img.imgUrl} alt={`Host Image ${img.id}`} style={{width: `50px`}} />
+            {editedHostData.Host_img.map((img) => (
+              <img
+                key={img.id}
+                src={img.imgUrl}
+                alt={`Host Image ${img.id}`}
+                style={{ width: `50px` }}
+              />
             ))}
             <div>{editedHostData.hostName}</div>
             <div>{editedHostData.location}</div>
             <div>{editedHostData.description}</div>
             <div>{editedHostData.propertyType}</div>
+            <div style={{ color: editedHostData.publish ? "#00FF00" : "#FF0000" }}>
+          {editedHostData.publish ? "เผยแพร์" : "ไม่เผยแพร์"}
+        </div>
           </>
         )}
         {isEditMode ? (
