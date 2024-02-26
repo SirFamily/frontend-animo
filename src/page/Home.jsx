@@ -1,35 +1,46 @@
-import { useState } from "react";
-import Nav from "../nav/Nav";
-
+import { Link } from "react-router-dom";
+import HomeCss from "./css/Home.module.css";
+import DogBG from "../../public/BGdog.png";
 function Home() {
-
   return (
     <>
-      <form action="">
-        <div>
-          <div>Where you go ?</div>
-          <input type="text" />
-        </div>
-        <div className="flex flex-row">
-          <div>
-            <div>Check in</div>
-            <input type="text" />
+      <div
+        className={HomeCss.container}
+        style={{
+          background: `linear-gradient(0deg, rgba(0, 0, 0, 0.50) 0%, rgba(0, 0, 0, 0.00) 20%), url(${DogBG}) lightgray 0% / cover no-repeat `,
+        }}
+      >
+        <div className={HomeCss.inputform}>
+          <div className={HomeCss.box}>
+            <div className={HomeCss.textoninput}>Where you go ?</div>
+            <input type="text" className={HomeCss.input}/>
           </div>
           <div>
-            <div>Check out</div>
-            <input type="text" />
+            <div className={HomeCss.boxcheck}>
+
+            <div className={HomeCss.box}>
+              <div  className={HomeCss.textoninput}>Check in</div>
+              <input type="text" className={HomeCss.input}/>
+            </div>
+            <div className={HomeCss.box}>
+              <div  className={HomeCss.textoninput}>Check out</div>
+              <input type="text" className={HomeCss.input}/>
+            </div>
+            </div>
+            
           </div>
+          <div className={HomeCss.box}>
+            <div  className={HomeCss.textoninput}>Guest</div>
+            <select id="pet" className={HomeCss.input}>
+              <option value="">เจ้าขาว</option>
+              <option value="">ขุนเดช</option>
+            </select>
+          </div>
+          <Link to="/login" className={HomeCss.btlinklogin}>Search</Link>
         </div>
-        <div>
-          <div>Guest</div>
-          <select id="pet">
-            <option value="">เจ้าขาว</option>
-            <option value="">ขุนเดช</option>
-          </select>
-        </div>
-        <button className="btn btn-accent">Accent</button>
-      </form>
-      <div>ค้นหาสิ่งที่ดีที่สุดสำหรับสัตว์เลี้ยงของคุณ</div>
+
+        <div className={HomeCss.desc}>ค้นหาสิ่งที่ดีที่สุดสำหรับสัตว์เลี้ยงของคุณ</div>
+      </div>
     </>
   );
 }

@@ -1,11 +1,31 @@
-import React from "react";
+import React, {  useState, useRef, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from '../hooks/useAuth'
-
+import NavCss from './css/Nav.module.css'
 export default function Nav() {
   const { user, logout } = useAuth(); 
   const navigate = useNavigate();
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef(null);
 
+  const handleClickOutside = (event) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      setIsOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+   
+  }, []);
+
+  const handleClick = (e) => {
+    setIsOpen(prevState => !prevState);
+  };
+  
   const hdlLogout = () => {
     logout();
     navigate('/');
@@ -15,17 +35,17 @@ export default function Nav() {
     {
       text: (
         <>
-          <Link to="/login" className="">
+        <div className={NavCss.flex}>
+        <Link to="/login" className="">
             Login
           </Link>
           <Link
             to="/register"
-            className="rounded-[25px] bg-teal-200 px-5 py-3 
-            justify-center w-44 h-14 text-white ml-10
-            text-white text-lg font-medium font-sans"
+            className={NavCss.bt_register}
           >
             Register
           </Link>
+        </div>
         </>
       ),
     },
@@ -35,7 +55,28 @@ export default function Nav() {
     {
       text: (
         <>
-          <Link to="/dashboard/pet"><div className="flex flex-row justify-around " >Profile {user?.id ? user.firstName: 'Guest'}</div></Link> 
+      <div ref={dropdownRef}  className={NavCss.dropdown}> {/* Use a semantic class name */}
+      <div onClick={handleClick} className={NavCss.dropdown_toggle}>
+        <div>
+          {user?.id ? user.firstName : 'Guest'}
+        </div>
+      </div>
+      {isOpen && (
+        <ul className={NavCss.dropdown_menu}>
+          <li className={NavCss.dropdown_menuli}>
+            <Link to="/dashboard/pet">Dashboard</Link>
+          </li>
+          <li className={NavCss.dropdown_menuli}>
+            <Link to="/dashboard/setting">Settings</Link>
+          </li>
+          <li className={NavCss.dropdown_menuli}>
+          <button onClick={hdlLogout} className="">
+                Logout
+              </button>
+          </li>
+        </ul>
+      )}
+    </div>
         </>
       ),
     },
@@ -43,24 +84,25 @@ export default function Nav() {
 
   return (
     <>
-      <nav className="flex flex-row justify-around mt-[50px]">
+      <nav className={NavCss.container_flex}>
         <div>
-          <Link to="/" className="text-black text-3xl font-bold font-sans">
+          <Link to="/" className={NavCss.brand_text}>
             <div>
-              <span className="text-teal-200">A</span>nimo
+              <span className={NavCss.text_blue}>A</span>nimo
             </div>
           </Link>
         </div>
 
-        <div className="flex flex-row justify-around gap-4">
+        <div className={NavCss.container_box}>
           {user?.id ? (
             <>
               {userNav.map((item, index) => (
                 <div key={index}>{item.text}</div>
+                
               ))}
-              <div><button onClick={hdlLogout} className="">
+              {/* <div><button onClick={hdlLogout} className="">
                 Logout
-              </button></div>
+              </button></div> */}
               
             </>
           ) : (
