@@ -1,0 +1,149 @@
+.background {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.imgContainer {
+    border-radius: 35px;
+}
+
+
+
+
+.img {
+    height: 100%;
+    border-radius: 0px 35px 35px 0px;
+}
+
+.in_container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    height: 500px;
+    background: #FFF;
+    border-radius: 35px;
+    box-shadow: 0px 4px 38.5px 0px rgba(0, 0, 0, 0.25);
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 16px;
+    align-items: center;
+    animation: fadeIn 0.8s ease-in-out;
+
+}
+
+.lgtext {
+    color: #000;
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 30px;
+
+}
+
+.inform {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input {
+    display: flex;
+    width: 329px;
+    padding: 8px 7px 7px 16px;
+    border-radius: 13px;
+    background: #F5F5F5;
+}
+
+.break {
+    background-color: #000;
+}
+
+.linkre {
+    color: #00545F;
+}
+.btsubmit {
+    display: flex;
+    height: 36px;
+    padding: 9px 30px;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: #00545F;
+    color: #ffffff;
+    transition: background-color 0.3s ease-in-out;
+font-weight: 400;
+}
+
+.custom_hr {
+    width: 380px;
+    height: 1px;
+}
+
+.leave {
+    height: 50px;
+    width: 50px;
+    position: relative; /* Add position absolute */
+    top: -30px; /* Adjust the top position */
+    left: -200px; /* Adjust the left position */
+    cursor: pointer;
+    z-index: 1;
+    background-color: #00545F;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    font-weight: bolder;
+    transition: background-color 0.3s ease-in-out;
+
+}
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.btsubmit:hover{
+    background-color: #85c4d4;
+    color: #00545F;
+
+}
+
+.leave:hover{
+    height: 50px;
+    width: 50px;
+    background-color: #00545f4d;
+    color: #00545F;
+
+}
+
+.linkre:hover {
+    color: #02363d;
+}
+
+.input:focus {
+    border: 1px solid #ccc; /* Set the border color when focused, you can adjust this color */
+    outline: none; /* Remove the default focus outline */
+    /* ... (other styles) */
+  }
