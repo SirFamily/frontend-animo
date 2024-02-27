@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import imgDog from "../assets/image (18).png";
 import axios from "axios";
 import RegisCss from "./css/Register.module.css";
@@ -19,6 +19,7 @@ export default function Register() {
     imageprofile: "",
     avatar: null,
   });
+  const navigate = useNavigate();
 
   const [currentStep, setCurrentStep] = useState(1);
 
@@ -39,7 +40,6 @@ export default function Register() {
   };
 
   const hdlSubmit = async (e) => {
-    e.preventDefault();
     e.preventDefault();
     if (input.password !== input.password2) {
       alert("Passwords do not match");
@@ -70,7 +70,8 @@ export default function Register() {
       );
       console.log(rs);
       if (rs.status === 201) {
-        setRegistered(true);
+       alert("ลงทะเบียนสำเร็จ")
+       navigate("/login");
       }
     } catch (error) {
       console.error("Registration failed", error);
@@ -96,7 +97,7 @@ export default function Register() {
               <form
                 className={RegisCss.inform}
                 onSubmit={
-                  currentStep === 3 ? hdlSubmit : (e) => e.preventDefault()
+                  currentStep === 4 ? hdlSubmit : (e) => e.preventDefault()
                 }
                 encType="multipart/form-data"
               >
@@ -192,32 +193,54 @@ export default function Register() {
                       />
                     </>
                   )}
-                </div>
 
-                {currentStep === 3 && (
-                  <>
-                    <input
-                      type="file"
-                      name="imageprofile"
-                      accept="image/png,image/jpeg"
-                      className={RegisCss.input}
-                      onChange={hdlFileChange}
-                    />
-                  </>
-                )}
+                  {currentStep === 3 && (
+                    <>
+                      <input
+                        type="text"
+                        name="phone"
+                        placeholder="phone"
+                        value={input.phone}
+                        className={RegisCss.input}
+                        onChange={hdlChange}
+                      />
+                      <br />
+                      <input
+                        type="text"
+                        name="identityNumber"
+                        placeholder="IdentityNumber"
+                        value={input.identityNumber}
+                        className={RegisCss.input}
+                        onChange={hdlChange}
+                      />
+                    </>
+                  )}
+
+                  {currentStep === 4 && (
+                    <>
+                      <input
+                        type="file"
+                        name="imageprofile"
+                        accept="image/png,image/jpeg"
+                        className={RegisCss.input}
+                        onChange={hdlFileChange}
+                      />
+                    </>
+                  )}
+                </div>
                 <div className={RegisCss.btnArea}>
                   {currentStep > 1 && (
                     <button onClick={prevStep} className={RegisCss.btsubmit}>
                       Back
                     </button>
                   )}
-                  {currentStep < 3 && (
+                  {currentStep < 4 && (
                     <button onClick={nextStep} className={RegisCss.btsubmit}>
                       Next
                     </button>
                   )}
 
-                  {currentStep === 3 && (
+                  {currentStep === 4 && (
                     <button className={RegisCss.btsubmit}>Register</button>
                   )}
                 </div>
