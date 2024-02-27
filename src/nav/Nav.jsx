@@ -55,10 +55,10 @@ export default function Nav() {
             <div onClick={handleClick} className={NavCss.dropdown_toggle}>
               <img src={user?.img_profile} alt={user?.firstName} className={NavCss.imgprofile}/>
               <div className={NavCss.btprofile}>
-                <div>
+                <div className={NavCss.textname}>
                   {user?.firstName} {user?.lastName}
                 </div>
-                <div>
+                <div  className={NavCss.textemail}>
                     {user?.email}
                   </div>
               </div>
