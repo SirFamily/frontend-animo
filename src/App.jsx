@@ -6,7 +6,7 @@ function App() {
 
   if(loading) {
     return (
-      <p className="text-4xl text-primary">Loading..</p>
+      <span class="loading loading-ring loading-lg"></span>
     )
   }
 
