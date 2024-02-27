@@ -66,7 +66,7 @@ function Login() {
                   onChange={hdlChange}
                   className={LoginCss.input}
                 />
-                <br className={LoginCss.break} />
+                <br/>
 
                 <button type="submit">
                   <div className={LoginCss.btsubmit}>LOGIN</div>

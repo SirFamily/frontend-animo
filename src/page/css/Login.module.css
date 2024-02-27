@@ -73,9 +73,6 @@ background-color: #F1F4F8;;
     background: #F5F5F5;
 }
 
-.break {
-    background-color: #000;
-}
 
 .linkre {
     color: #00545F;
@@ -105,7 +102,7 @@ font-weight: 400;
     width: 50px;
     position: relative; /* Add position absolute */
     top: -30px; /* Adjust the top position */
-    left: -200px; /* Adjust the left position */
+    left: -190px; /* Adjust the left position */
     cursor: pointer;
     z-index: 1;
     background-color: #00545F;
