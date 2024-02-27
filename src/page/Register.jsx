@@ -6,6 +6,18 @@ import RegisCss from "./css/Register.module.css";
 
 export default function Register() {
   const [input, setInput] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    phone: "",
+    identityNumber: "",
+    zipcode: "",
+    address: "",
+    city: "",
+    district: "",
+    imageprofile: "",
+    avatar: null,
   });
 
   const [currentStep, setCurrentStep] = useState(1);
@@ -28,7 +40,41 @@ export default function Register() {
 
   const hdlSubmit = async (e) => {
     e.preventDefault();
-    // Your existing form validation and submission logic...
+    e.preventDefault();
+    if (input.password !== input.password2) {
+      alert("Passwords do not match");
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("firstName", input.firstName);
+    formData.append("lastName", input.lastName);
+    formData.append("email", input.email);
+    formData.append("password", input.password);
+    formData.append("phone", input.phone);
+    formData.append("identityNumber", input.identityNumber);
+    formData.append("address", input.address);
+    formData.append("zipcode", input.zipcode);
+    formData.append("city", input.city);
+    formData.append("district", input.district);
+    formData.append("avatar", input.avatar);
+    try {
+      const rs = await axios.post(
+        "http://localhost:8112/auth/register",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      console.log(rs);
+      if (rs.status === 201) {
+        setRegistered(true);
+      }
+    } catch (error) {
+      console.error("Registration failed", error);
+    }
   };
 
   return (
@@ -41,8 +87,7 @@ export default function Register() {
               style={{
                 background: `linear-gradient(0deg, rgba(0, 0, 0, 0.50) 0%, rgba(0, 0, 0, 0.00) 20%), url('${imgDog}') lightgray 0% / cover no-repeat `,
               }}
-            >
-            </div>
+            ></div>
             <div className={RegisCss.form}>
               <Link to="/" className={RegisCss.leave}>
                 X
