@@ -51,6 +51,7 @@ function Login() {
                   id="email"
                   placeholder="Email"
                   name="email"
+                  required
                   value={input.email}
                   onChange={hdlChange}
                   className={LoginCss.input}
@@ -60,6 +61,7 @@ function Login() {
                   type="password"
                   placeholder="Password"
                   name="password"
+                  required
                   value={input.password}
                   onChange={hdlChange}
                   className={LoginCss.input}

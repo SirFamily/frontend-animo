@@ -4,7 +4,7 @@
     justify-content: center;
     height: 100vh;
     width: 100%;
-background-color: #F1F4F8;;
+
 }
 
 .container {
@@ -79,7 +79,6 @@ background-color: #F1F4F8;;
 
 .linkre {
     color: #00545F;
-    font-weight: bold;
 }
 .btsubmit {
     display: flex;
