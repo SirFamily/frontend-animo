@@ -1,15 +1,13 @@
 import React from "react";
-import ModuleCSs from "./ModelCss/module.module.css";
-export default function ModelPopup({ children  }) {
-    
+import ModuleCSS from "./ModelCss/module.module.css";
+
+export default function ModelPopup({ children }) {
   return (
-    <>
-      <div className={ModuleCSs.popup_container}>
-        <div className={ModuleCSs.popup}>
-          {children}
-        </div>
+    <div className={ModuleCSS.popup_container}>
+      <div className={`${ModuleCSS.popup} ${ModuleCSS.animate}`}>
+        {children}
       </div>
-    </>
+    </div>
   );
 }
 

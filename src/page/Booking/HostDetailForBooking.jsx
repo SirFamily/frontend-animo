@@ -3,6 +3,7 @@ import ModelPopup from "../../component/ModelPopup";
 import axios from "axios";
 import RoomDetailForBooking from "./RoomDetailForBooking";
 import ShowImagesHost from "./ShowImagesHost";
+import HostDetailCss from "./css/HostDetail.module.css";
 
 export default function HostDetailForBooking({ onClose, selectedHost }) {
   const [roomsData, setRoomsData] = useState([]);
@@ -38,42 +39,68 @@ export default function HostDetailForBooking({ onClose, selectedHost }) {
 
     getData();
   }, []);
-  console.log(roomsData);
+  console.log(selectedHost);
   return (
     <div>
       <ModelPopup>
-        <h1 className="text-center">Host Detail</h1>
-        <hr />
-        <p>Name : {selectedHost.hostName}</p>
-        <div onClick={() => toggleImgPopup(selectedHost.Host_img)}>
-        <img
-          src={
-            selectedHost.Host_img && selectedHost.Host_img.length > 0
-              ? selectedHost.Host_img[0].imgUrl
-              : "/assets/images/host_image.jpg"
-          }
-          alt="host"
-          width={300}
-          height={250}
-        />
-        </div>
-        
-        {roomsData.map((data) => (
-          <div key={data.id} onClick={() => togglePopup(data)}>
-            <div
-              style={{
-                background: `linear-gradient(0deg, rgba(0, 0, 0, 0.50) 0%, rgba(0, 0, 0, 0.00) 100%), url(${
-                  data.rooms_img && data.rooms_img[0]
-                    ? data.rooms_img[0].urlImg
-                    : "https://t4.ftcdn.net/jpg/04/73/25/49/360_F_473254957_bxG9yf4ly7OBO5I0O5KABlN930GwaMQz.jpg"
-                }) lightgray 50% / cover no-repeat`,
-              }}
-            >
-              <div>{data.roomName}</div>
+        <div className={HostDetailCss.container}>
+            <div className={HostDetailCss.incontainer}>
+              <div className={HostDetailCss.bigtext}>
+                Hotel : {selectedHost.hostName}
+              </div>
+              <div
+                className={HostDetailCss.imghost_container}
+                onClick={() => toggleImgPopup(selectedHost.Host_img)}
+                style={{
+                  background: `url("${selectedHost.Host_img[0].imgUrl}") no-repeat center/cover`,
+                }}
+              >
+                <p
+                  className={HostDetailCss.fixposition}
+                  onClick={() => toggleImgPopup(selectedHost.Host_img)}
+                >
+                  รูปภาพเพิ่มเติม
+                </p>
+              </div>
+              <div className={HostDetailCss.text}>
+                {selectedHost.description}
+              </div>
+              <hr />
+              <div>{selectedHost.location}</div>
+              <hr />
             </div>
+            <div className={HostDetailCss.incontainer}>
+              <div className={HostDetailCss.bigtext}>Room</div>
+              {roomsData.map((data) => (
+                <div
+                  key={data.id}
+                  onClick={() => togglePopup(data)}
+                  className={HostDetailCss.containerroom}
+                >
+                  <img
+                    className={HostDetailCss.img}
+                    src={
+                      data.rooms_img && data.rooms_img[0]
+                        ? data.rooms_img[0]?.urlImg
+                        : "https://t4.ftcdn.net/jpg/04/73/25/49/360_F_473254957_bxG9yf4ly7OBO5I0O5KABlN930GwaMQz.jpg"
+                    }
+                  />
+                  <div className={HostDetailCss.detailroom}>
+                    <div>Room <span className={HostDetailCss.texthigh}>{data.roomName}</span></div>
+                    <div>PricePerNight <span className={HostDetailCss.texthigh}>{data.pricePerNight}</span></div>
+                    <div>Capacity <span className={HostDetailCss.texthigh}>{data.maximumAnimal}</span></div>
+                  </div>
+                </div>
+              ))}
+              <br />
+              <hr />
+            </div>
+
+          <div className={HostDetailCss.btarea}>
+            <button onClick={onClose}>Close</button>
           </div>
-        ))}
-        <button onClick={onClose}>Close</button>
+        </div>
+
         {isPopupOpen && (
           <RoomDetailForBooking
             onClose={togglePopup}

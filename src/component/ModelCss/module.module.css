@@ -1,45 +1,38 @@
+/* module.module.css */
+
 .popup_container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
+  padding-top: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  overflow-y: auto;
+  padding-bottom: 60px;
+}
+
+.popup {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  /* Add other styles as needed */
+}
+
+/* Add animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
-  
-  .popup {
-    background: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  to {
+    opacity: 1;
   }
-  
-  .label01 {
-    display: block;
-    margin-bottom: 8px;
-  }
-  
-  /* input {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 16px;
-  }
-  
-  button {
-    background: #007bff;
-    color: #fff;
-    padding: 8px 16px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-right: 8px;
-  }
-  
-  button:last-child {
-    background: #ccc;
-  }
-   */
+}
+
+.animate {
+  animation: fadeIn 0.5s ease-out; /* Adjust duration and easing as needed */
+}
