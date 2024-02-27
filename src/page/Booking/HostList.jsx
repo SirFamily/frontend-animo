@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import HostDetailForBooking from "./HostDetailForBooking";
-
+import BookCss from "./css/HostCss.module.css";
 export default function HostList() {
   const [isData, setIsData] = useState([]);
   const [isPopupOpen, setPopupOpen] = useState(false);
@@ -26,27 +26,34 @@ export default function HostList() {
   }, []);
   return (
     <>
-      <h1 className="">Recommend</h1>
-      <div class="">
-        {isData.map((host) => (
-          <div
-            key={host.id}
-            onClick={() => togglePopup(host)}
-            class=""
-          >
-            <h2>{host.hostName}</h2>
-            <p class="">{host.location}</p>
-            <p class="">{host.description}</p>
-            <p class="">{host.propertyType}</p>
-          </div>
-        ))}
+      <div class={BookCss.container}>
+        <h1 className={BookCss.text}>Recommend</h1>
+        <div className={BookCss.container_list}>
+          {isData.map((host) => (
+            <div
+              key={host.id}
+              onClick={() => togglePopup(host)}
+              className={BookCss.card}
+            >
+              <div>
+                <img
+                  src={host.Host_img[0].imgUrl}
+                  alt="host"
+                  className={BookCss.imghostpre}
+                />
+              </div>
+              <div className={BookCss.texthost}>{host.hostName}</div>
+              <p>{host.location}</p>
+            </div>
+          ))}
+        </div>
+        {isPopupOpen && (
+          <HostDetailForBooking
+            onClose={togglePopup}
+            selectedHost={selectedHost}
+          />
+        )}
       </div>
-      {isPopupOpen && (
-        <HostDetailForBooking
-          onClose={togglePopup}
-          selectedHost={selectedHost}
-        />
-      )}
     </>
   );
 }

@@ -1,0 +1,49 @@
+.container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 90px;
+    height: auto;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  .text {
+    font-size: 42px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .container_list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 26px;
+    width: 76%;
+  }
+  
+  .card {
+    width: 270px;
+    height: auto;
+    cursor: pointer; 
+  }
+  
+  
+  .imghostpre {
+    border-radius: 17px;
+    margin-bottom: 6px;
+  }
+  
+  .texthost {
+    font-weight: bold;
+  }
+  

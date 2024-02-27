@@ -4,5 +4,6 @@
 :root {
     display: flex;
     flex-direction: column;
+    background-color: #F1F4F8;;
 }
 
