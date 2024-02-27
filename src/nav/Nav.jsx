@@ -1,9 +1,9 @@
-import React, {  useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import useAuth from '../hooks/useAuth'
-import NavCss from './css/Nav.module.css'
+import useAuth from "../hooks/useAuth";
+import NavCss from "./css/Nav.module.css";
 export default function Nav() {
-  const { user, logout } = useAuth(); 
+  const { user, logout } = useAuth();
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
@@ -19,33 +19,29 @@ export default function Nav() {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-   
   }, []);
 
   const handleClick = (e) => {
-    setIsOpen(prevState => !prevState);
+    setIsOpen((prevState) => !prevState);
   };
-  
+
   const hdlLogout = () => {
     logout();
-    navigate('/');
+    navigate("/");
   };
 
   const guestNav = [
     {
       text: (
         <>
-        <div className={NavCss.flex}>
-        <Link to="/login" className="">
-            Login
-          </Link>
-          <Link
-            to="/register"
-            className={NavCss.bt_register}
-          >
-            Register
-          </Link>
-        </div>
+          <div className={NavCss.flex}>
+            <Link to="/login" className="">
+              Login
+            </Link>
+            <Link to="/register" className={NavCss.bt_register}>
+              Register
+            </Link>
+          </div>
         </>
       ),
     },
@@ -55,28 +51,34 @@ export default function Nav() {
     {
       text: (
         <>
-      <div ref={dropdownRef}  className={NavCss.dropdown}> {/* Use a semantic class name */}
-      <div onClick={handleClick} className={NavCss.dropdown_toggle}>
-        <div>
-          {user?.id ? user.firstName : 'Guest'}
-        </div>
-      </div>
-      {isOpen && (
-        <ul className={NavCss.dropdown_menu}>
-          <li className={NavCss.dropdown_menuli}>
-            <Link to="/dashboard/pet">Dashboard</Link>
-          </li>
-          <li className={NavCss.dropdown_menuli}>
-            <Link to="/dashboard/setting">Settings</Link>
-          </li>
-          <li className={NavCss.dropdown_menuli}>
-          <button onClick={hdlLogout} className="">
-                Logout
-              </button>
-          </li>
-        </ul>
-      )}
-    </div>
+          <div ref={dropdownRef} className={NavCss.dropdown}>
+            <div onClick={handleClick} className={NavCss.dropdown_toggle}>
+              <img src={user.img_profile} alt={user.firstName} className={NavCss.imgprofile}/>
+              <div className={NavCss.btprofile}>
+                <div>
+                  {user.firstName} {user.lastName}
+                </div>
+                <div>
+                    {user.email}
+                  </div>
+              </div>
+            </div>
+            {isOpen && (
+              <ul className={NavCss.dropdown_menu}>
+                <li className={NavCss.dropdown_menuli}>
+                  <Link to="/dashboard/pet">Dashboard</Link>
+                </li>
+                <li className={NavCss.dropdown_menuli}>
+                  <Link to="/dashboard/setting">Settings</Link>
+                </li>
+                <li className={NavCss.dropdown_menuli}>
+                  <button onClick={hdlLogout} className="">
+                    Logout
+                  </button>
+                </li>
+              </ul>
+            )}
+          </div>
         </>
       ),
     },
@@ -98,17 +100,13 @@ export default function Nav() {
             <>
               {userNav.map((item, index) => (
                 <div key={index}>{item.text}</div>
-                
               ))}
               {/* <div><button onClick={hdlLogout} className="">
                 Logout
               </button></div> */}
-              
             </>
           ) : (
-            guestNav.map((item, index) => (
-              <div key={index}>{item.text}</div>
-            ))
+            guestNav.map((item, index) => <div key={index}>{item.text}</div>)
           )}
         </div>
       </nav>

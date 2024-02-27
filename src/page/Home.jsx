@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import HomeCss from "./css/Home.module.css";
-import DogBG from "../../public/BGdog.png";
+import DogBG from "../assets/BGdog.png";
 function Home() {
   return (
     <>

@@ -26,18 +26,18 @@ export default function HostList() {
   }, []);
   return (
     <>
-      <h1 className="text-center text-3xl font-bold mt-8">Recommend</h1>
-      <div class="container mx-auto px-4">
+      <h1 className="">Recommend</h1>
+      <div class="">
         {isData.map((host) => (
           <div
             key={host.id}
             onClick={() => togglePopup(host)}
-            class="bg-white p-4 rounded-lg shadow-md mt-4 mb-4"
+            class=""
           >
             <h2>{host.hostName}</h2>
-            <p class="text-gray-500 mb-2">{host.location}</p>
-            <p class="mb-2">{host.description}</p>
-            <p class="text-gray-700 font-bold">{host.propertyType}</p>
+            <p class="">{host.location}</p>
+            <p class="">{host.description}</p>
+            <p class="">{host.propertyType}</p>
           </div>
         ))}
       </div>
