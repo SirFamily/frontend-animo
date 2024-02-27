@@ -95,6 +95,7 @@ font-weight: 400;
 .custom_hr {
     width: 380px;
     height: 1px;
+    margin-bottom: 10px;
 }
 
 .leave {

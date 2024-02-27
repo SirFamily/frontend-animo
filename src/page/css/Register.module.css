@@ -75,6 +75,7 @@
     background: #F5F5F5;
 }
 
+
 .inputingroup{
     /* display: flex; */
     width: 100%;
@@ -106,6 +107,8 @@ font-weight: 400;
 .custom_hr {
     width: 380px;
     height: 1px;
+    margin-bottom: 2px;
+
 }
 
 .leave {
@@ -129,12 +132,13 @@ font-weight: 400;
 
 .btnArea{
     display: flex;
+    gap:  10px;
   margin-bottom: 10px;
 }
 
 .inputgroup{
     display: flex;
-
+    gap: 10px;
     width: 329px;
 }
 
