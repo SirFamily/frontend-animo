@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import DashCss from "../dashbordCss/DashCss.module.css";
 import ViewPet from "./PetDetail";
+import defaultImageUrl from "../../../assets/picture.png"
 
 const ListPet = (props) => {
   const { id } = props;
@@ -47,7 +48,7 @@ const ListPet = (props) => {
             style={{
               background: `linear-gradient(0deg, rgba(0, 0, 0, 0.50) 0%, rgba(0, 0, 0, 0.00) 100%), url(${
                 pet.urlImgPet ||
-                "https://t4.ftcdn.net/jpg/04/73/25/49/360_F_473254957_bxG9yf4ly7OBO5I0O5KABlN930GwaMQz.jpg"
+                defaultImageUrl
               }) lightgray 50% / cover no-repeat`,
             }}
           >

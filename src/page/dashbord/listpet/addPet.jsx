@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import ModelPopup from "../../../component/ModelPopup";
 import useAuth from "../../../hooks/useAuth";
+import AddPetCss from "./Css/AddPerCss.module.css";
 import axios from "axios";
-
+import defaultImageUrl from "../../../assets/picture.png"
 export default function AddPet({ onClose }) {
   const { user } = useAuth();
+  const [imagePreview, setImagePreview] = useState(null);
+
   const id = user.id;
   const [input, setInput] = useState({
     petName: null,
@@ -17,7 +20,6 @@ export default function AddPet({ onClose }) {
     healthStatus: null,
     avatar: null,
   });
-  //
 
   const hdlChange = (e) => {
     setInput((prv) => ({ ...prv, [e.target.name]: e.target.value }));
@@ -25,6 +27,10 @@ export default function AddPet({ onClose }) {
 
   const hdlFileChange = (e) => {
     setInput((prv) => ({ ...prv, avatar: e.target.files[0] }));
+    // สร้าง URL ของรูปภาพที่เลือกและแสดงตัวอย่างรูปภาพ
+    const selectedImage = e.target.files[0];
+    const imageUrl = URL.createObjectURL(selectedImage);
+    setImagePreview(imageUrl);
   };
 
   const hdlSubmit = async (e) => {
@@ -32,8 +38,11 @@ export default function AddPet({ onClose }) {
 
     const formData = new FormData();
     formData.append("petName", input.petName);
-    formData.append("petType", input.petType ? input.petType:null);
-    formData.append("birthDate", input.birthDate ? new Date(input.birthDate).toISOString() : null);
+    formData.append("petType", input.petType ? input.petType : null);
+    formData.append(
+      "birthDate",
+      input.birthDate ? new Date(input.birthDate).toISOString() : null
+    );
     formData.append("weight", input.weight);
     formData.append("height", input.height);
     formData.append("color", input.color);
@@ -58,7 +67,6 @@ export default function AddPet({ onClose }) {
         onClose();
       }
     } catch (error) {
-      
       console.error("Registration failed", error);
     }
   };
@@ -66,109 +74,96 @@ export default function AddPet({ onClose }) {
   return (
     <>
       <ModelPopup>
-        <form onSubmit={hdlSubmit} encType="multipart/form-data">
-          <h1>AddPet</h1>
-
-          <input
-            placeholder="Name"
-            type="text"
-            name="petName"
-            value={input.petName}
-            onChange={hdlChange}
-            required
+        <div className={AddPetCss.container}>
+          <div className={AddPetCss.text}>AddPet</div>
+          <img
+            src={imagePreview !== null ? imagePreview : defaultImageUrl}
+            alt="Preview"
+            className={AddPetCss.imagePreview}
           />
-
-          <input
-            placeholder="Type"
-            type="text"
-            name="petType"
-            value={input.petType}
-            onChange={hdlChange}
-          />
-
-          <input
-            placeholder="birthDate"
-            type="date"
-            name="birthDate"
-            value={input.birthDate}
-            onChange={hdlChange}
-          />
-
-          <input
-            placeholder="weight"
-            type="number"
-            name="weight"
-            value={input.weight}
-            onChange={hdlChange}
-          />
-
-          <input
-            placeholder="height"
-            type="number"
-            name="height"
-            value={input.height}
-            onChange={hdlChange}
-          />
-
-          <input
-            placeholder="color"
-            type="text"
-            name="color"
-            value={input.color}
-            onChange={hdlChange}
-          />
-
-          <input
-            placeholder="gender"
-            type="text"
-            name="gender"
-            value={input.gender}
-            onChange={hdlChange}
-          />
-
-          <input
-            placeholder="healthStatus"
-            type="text"
-            name="healthStatus"
-            value={input.healthStatus}
-            onChange={hdlChange}
-          />
-
           <input
             type="file"
-            src=""
-            alt=""
+              src=""
+              alt=""
             accept="image/png,image/jpeg"
             onChange={hdlFileChange}
           />
-          <button>Add</button>
-          <button onClick={onClose}>Close</button>
-        </form>
+          <form
+            onSubmit={hdlSubmit}
+            encType="multipart/form-data"
+            className={AddPetCss.form}
+          >
+            <input
+              placeholder="Name"
+              type="text"
+              name="petName"
+              value={input.petName}
+              onChange={hdlChange}
+              required
+            />
+
+            <input
+              placeholder="Type"
+              type="text"
+              name="petType"
+              value={input.petType}
+              onChange={hdlChange}
+            />
+
+            <input
+              placeholder="birthDate"
+              type="date"
+              name="birthDate"
+              value={input.birthDate}
+              onChange={hdlChange}
+            />
+
+            <input
+              placeholder="weight"
+              type="number"
+              name="weight"
+              value={input.weight}
+              onChange={hdlChange}
+            />
+
+            <input
+              placeholder="height"
+              type="number"
+              name="height"
+              value={input.height}
+              onChange={hdlChange}
+            />
+
+            <input
+              placeholder="color"
+              type="text"
+              name="color"
+              value={input.color}
+              onChange={hdlChange}
+            />
+
+            <input
+              placeholder="gender"
+              type="text"
+              name="gender"
+              value={input.gender}
+              onChange={hdlChange}
+            />
+
+            <input
+              placeholder="healthStatus"
+              type="text"
+              name="healthStatus"
+              value={input.healthStatus}
+              onChange={hdlChange}
+            />
+            <div>
+              <button>Add</button>
+              <button onClick={onClose}>Close</button>
+            </div>
+          </form>
+        </div>
       </ModelPopup>
     </>
   );
-}
-
-{
-  /* <div className={styles.popup_container}>
-<div className={styles.popup}>
-  <h2>Login</h2>
-  <label className={styles.label01} htmlFor="username">Username:</label>
-  <input
-    type="text"
-    id="username"
-    value={username}
-    onChange={(e) => setUsername(e.target.value)}
-  />
-  <label htmlFor="password">Password:</label>
-  <input
-    type="password"
-    id="password"
-    value={password}
-    onChange={(e) => setPassword(e.target.value)}
-  />
-  <button onClick={handleLogin}>Login</button>
-  <button onClick={onClose}>Close</button>
-</div>
-</div> */
 }

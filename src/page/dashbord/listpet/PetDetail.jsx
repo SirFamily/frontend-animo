@@ -3,6 +3,7 @@ import ModelPopup from "../../../component/ModelPopup";
 import useAuth from "../../../hooks/useAuth";
 import axios from "axios";
 import PetDetailCss from "./Css/PetDetailCss.module.css";
+import defaultImageUrl from "../../../assets/picture.png"
 
 export default function PetDetail({ onClose, petData }) {
   const [isEditMode, setIsEditMode] = useState(false);
@@ -102,7 +103,7 @@ export default function PetDetail({ onClose, petData }) {
             <div>
               <img
                 className={PetDetailCss.petImage}
-                src={editedPetData.urlImgPet}
+                src={editedPetData.urlImgPet !== "" ? editedPetData.urlImgPet : defaultImageUrl}
               />
               <input
                 type="file"
@@ -194,7 +195,7 @@ export default function PetDetail({ onClose, petData }) {
           <>
             <img
               className={PetDetailCss.petImage}
-              src={editedPetData.urlImgPet}
+              src={editedPetData.urlImgPet !== "" ? editedPetData.urlImgPet : defaultImageUrl}
             />
             <div className={PetDetailCss.container_info}>
               <div className={PetDetailCss.textname}>
