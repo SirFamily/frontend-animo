@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import styles from "./petCss/addPet.module.css";
 import ModelPopup from "../../../component/ModelPopup";
 import useAuth from "../../../hooks/useAuth";
 import axios from "axios";

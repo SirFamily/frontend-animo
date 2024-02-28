@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import DashCss from "../dashbordCss/DashCss.module.css";
-import ViewPet from "./ViewPet";
+import ViewPet from "./PetDetail";
 
 const ListPet = (props) => {
   const { id } = props;

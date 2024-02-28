@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import ModelPopup from "../../../component/ModelPopup";
 import useAuth from "../../../hooks/useAuth";
 import axios from "axios";
+import PetDetailCss from "./Css/PetDetailCss.module.css";
 
-export default function ViewPet({ onClose, petData }) {
+export default function PetDetail({ onClose, petData }) {
   const [isEditMode, setIsEditMode] = useState(false);
   const [editedPetData, setEditedPetData] = useState({ ...petData });
   const { user } = useAuth();
-  
+
   const hdlFileChange = (e) => {
     setInput((prv) => ({ ...prv, avatar: e.target.files[0] }));
   };
@@ -53,7 +54,7 @@ export default function ViewPet({ onClose, petData }) {
       console.log(rs);
       if (rs.status === 200) {
         alert("เปลียนแปลงสำเร็จ");
-        setIsEditMode(false)
+        setIsEditMode(false);
       }
     } catch (error) {
       console.error("Registration failed", error);
@@ -95,19 +96,38 @@ export default function ViewPet({ onClose, petData }) {
 
   return (
     <ModelPopup>
-      <div>
+      <div className={PetDetailCss.container}>
         {isEditMode ? (
           <>
-            <input
-              placeholder="Name"
-              type="text"
-              name="petName"
-              value={editedPetData.petName}
-              onChange={hdlChange}
-              required
-            />
+            <div>
+              <img
+                className={PetDetailCss.petImage}
+                src={editedPetData.urlImgPet}
+              />
+              <input
+                type="file"
+                src=""
+                alt=""
+                accept="image/png,image/jpeg"
+                onChange={hdlFileChange}
+              />
+            </div>
+            <div className={PetDetailCss.container_info}>
+
+            <div>
+              <input
+                className={PetDetailCss.textname}
+                placeholder="Name"
+                type="text"
+                name="petName"
+                value={editedPetData.petName}
+                onChange={hdlChange}
+                required
+              />
+            </div>
 
             <input
+              className={PetDetailCss.text}
               placeholder="Type"
               type="text"
               name="petType"
@@ -116,6 +136,7 @@ export default function ViewPet({ onClose, petData }) {
             />
 
             <input
+              className={PetDetailCss.text}
               placeholder="birthDate"
               type="date"
               name="birthDate"
@@ -124,6 +145,7 @@ export default function ViewPet({ onClose, petData }) {
             />
 
             <input
+              className={PetDetailCss.text}
               placeholder="weight"
               type="number"
               name="weight"
@@ -132,6 +154,7 @@ export default function ViewPet({ onClose, petData }) {
             />
 
             <input
+              className={PetDetailCss.text}
               placeholder="height"
               type="number"
               name="height"
@@ -140,6 +163,7 @@ export default function ViewPet({ onClose, petData }) {
             />
 
             <input
+              className={PetDetailCss.text}
               placeholder="color"
               type="text"
               name="color"
@@ -148,6 +172,7 @@ export default function ViewPet({ onClose, petData }) {
             />
 
             <input
+              className={PetDetailCss.text}
               placeholder="gender"
               type="text"
               name="gender"
@@ -156,38 +181,70 @@ export default function ViewPet({ onClose, petData }) {
             />
 
             <input
+              className={PetDetailCss.text}
               placeholder="healthStatus"
               type="text"
               name="healthStatus"
               value={editedPetData.healthStatus}
               onChange={hdlChange}
             />
-
-            {/* <input
-            type="file"
-            src=""
-            alt=""
-            accept="image/png,image/jpeg"
-            onChange={hdlFileChange}
-          /> */}
+             </div>
           </>
         ) : (
           <>
             <img
+              className={PetDetailCss.petImage}
               src={editedPetData.urlImgPet}
-              alt=""
-              style={{ width: "300px", height: "200px" }}
             />
-            <h1>{editedPetData.id}</h1>
-            <h1>{editedPetData.petName}</h1>
-            <div>{editedPetData.petType}</div>
-            <div>{editedPetData.birthDate}</div>
-            <div>
-              <div>{editedPetData.weight}</div>
-              <div>{editedPetData.height}</div>
+            <div className={PetDetailCss.container_info}>
+              <div className={PetDetailCss.textname}>
+                {editedPetData.petName}
+              </div>
+              <div className={PetDetailCss.text}>
+                ประเภท{" "}
+                <span className={PetDetailCss.hightext}>
+                  {editedPetData.petType}
+                </span>
+              </div>
+              <div className={PetDetailCss.text}>
+                วันเกิด{" "}
+                <span className={PetDetailCss.hightext}>
+                  {editedPetData.birthDate}
+                </span>
+              </div>
+              <div className={PetDetailCss.container_flex}>
+                <div className={PetDetailCss.text}>
+                  น้ำหนัก{" "}
+                  <span className={PetDetailCss.hightext}>
+                    {editedPetData.weight}
+                  </span>
+                </div>
+                <div className={PetDetailCss.text}>
+                  ส่วนสูง{" "}
+                  <span className={PetDetailCss.hightext}>
+                    {editedPetData.height}
+                  </span>
+                </div>
+              </div>
+              <div className={PetDetailCss.text}>
+                สี{" "}
+                <span className={PetDetailCss.hightext}>
+                  {editedPetData.color}
+                </span>
+              </div>
+              <div className={PetDetailCss.text}>
+                เพศ{" "}
+                <span className={PetDetailCss.hightext}>
+                  {editedPetData.gender}
+                </span>
+              </div>
+              <div className={PetDetailCss.text}>
+                สภาพร่างกาย
+                <span className={PetDetailCss.hightext}>
+                  {editedPetData.healthStatus}
+                </span>
+              </div>
             </div>
-            <div>{editedPetData.color}</div>
-            <div>{editedPetData.gender}</div>
           </>
         )}
       </div>
