@@ -1,17 +1,11 @@
 import React from "react";
-import ModelPopup from "../../component/ModelPopup";
+import ModelGridImages from "../../component/ModelGridImages";
 
 export default function ShowImagesHost({ onClose, selectedHostImg }) {
-  console.log(selectedHostImg);
   return (
     <div>
-      <ModelPopup>
-        {selectedHostImg.map((image) => (
-          <img key={image.id} src={image.imgUrl} alt={`Image ${image.id}`} width={150}
-          height={150}/>
-        ))}
-        <button onClick={onClose}>Close</button>
-      </ModelPopup>
+      <ModelGridImages selectedHostImg={selectedHostImg} onClose={onClose}/>
+      {/* <button onClick={onClose}>Close</button> */}
     </div>
   );
 }

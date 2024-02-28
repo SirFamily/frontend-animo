@@ -1,0 +1,50 @@
+.imageGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-gap: 10px;
+}
+
+.imageItem {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.largeImagePopup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.largeImage {
+    max-width: 80%;
+    max-height: 80%;
+    cursor: pointer;
+    border-radius: 5%;
+}
+
+.button {
+    background-color: #7a8892;
+    color: #fff;
+    padding: 10px;
+    margin: 5px;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    font-size: 16px;
+
+    
+}button:hover {
+    background-color: #2980b9;
+}
