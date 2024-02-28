@@ -30,6 +30,7 @@ export default function ModelGridImages({ selectedHostImg, onClose }) {
   return (
     <div>
       <ModelPopup>
+        <div className={GridImagesCss.container}>
         <div className={GridImagesCss.imageGrid}>
           {selectedHostImg.map((image, index) => (
             <img
@@ -63,6 +64,7 @@ export default function ModelGridImages({ selectedHostImg, onClose }) {
         <button onClick={onClose}>
           close
         </button>
+        </div>
       </ModelPopup>
     </div>
   );
