@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import Menu from "./menu/menu";
 import DashCss from "./dashbordCss/DashCss.module.css";
-import ProfileCss from "./dashbordCss/ProfileCss.module.css"
-import useAuth from '../../hooks/useAuth';
-import axios from 'axios';
+import ProfileCss from "./dashbordCss/ProfileCss.module.css";
+import useAuth from "../../hooks/useAuth";
+import axios from "axios";
 
 export default function DashboardSetting() {
   const { user } = useAuth();
@@ -14,12 +14,9 @@ export default function DashboardSetting() {
     const getData = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await axios.get(
-          `http://localhost:8112/p/user`,
-          {
-            headers: { Authorization: `Bearer ${token}` },
-          }
-        );
+        const response = await axios.get(`http://localhost:8112/p/user`, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
         setUserData(response.data);
         console.log(response.data);
       } catch (error) {
@@ -42,7 +39,7 @@ export default function DashboardSetting() {
       formData.append("city", userData.city);
       formData.append("district", userData.district);
       formData.append("zipcode", userData.zipcode);
-      formData.append("avatar", userData.avatar); 
+      formData.append("avatar", userData.avatar);
       const rs = await axios.put(
         `http://localhost:8112/p/user/update`,
         formData,
@@ -71,7 +68,11 @@ export default function DashboardSetting() {
   };
   const hdlFileChange = (e) => {
     const file = e.target.files[0];
-    setUserData((prv) => ({ ...prv, avatar: file, img_profile: URL.createObjectURL(file) }));
+    setUserData((prv) => ({
+      ...prv,
+      avatar: file,
+      img_profile: URL.createObjectURL(file),
+    }));
   };
 
   const handleCancelClick = () => {
@@ -84,13 +85,12 @@ export default function DashboardSetting() {
       city: userData.city,
       district: userData.district,
       zipcode: userData.zipcode,
-      avatar: userData.avatar, 
-      img_profile: userData.img_profile, 
+      avatar: userData.avatar,
+      img_profile: userData.img_profile,
     });
     setIsEditing(false);
   };
-  
-  
+
   return (
     <div className={DashCss.container}>
       <div className={DashCss.containerDash}>
@@ -105,34 +105,116 @@ export default function DashboardSetting() {
 
               {isEditing ? (
                 <div className={ProfileCss.container_info}>
-                  <input className={ProfileCss.info} type="text" name="firstName" value={userData.firstName} onChange={handleChange} />
-                  <input type="text" name="lastName" value={userData.lastName} onChange={handleChange} />
-                  <input type="text" name="email" value={userData.email} onChange={handleChange} disabled />
-                  <input type="text" name="phone" value={userData.phone} onChange={handleChange} />
-                  <input type="text" name="address" value={userData.address} onChange={handleChange} />
-                  <input type="text" name="city" value={userData.city} onChange={handleChange} />
-                  <input type="text" name="district" value={userData.district} onChange={handleChange} />
-                  <input type="text" name="zipcode" value={userData.zipcode} onChange={handleChange} />
-                  <input type="file" accept="image/*" onChange={hdlFileChange} />
+                  <input
+                    className={ProfileCss.info}
+                    type="text"
+                    name="firstName"
+                    value={userData.firstName}
+                    onChange={handleChange}
+                  />
+                  <input
+                    type="text"
+                    name="lastName"
+                    value={userData.lastName}
+                    onChange={handleChange}
+                  />
+                  <input
+                    type="text"
+                    name="email"
+                    value={userData.email}
+                    onChange={handleChange}
+                    disabled
+                  />
+                  <input
+                    type="text"
+                    name="phone"
+                    value={userData.phone}
+                    onChange={handleChange}
+                  />
+                  <input
+                    type="text"
+                    name="address"
+                    value={userData.address}
+                    onChange={handleChange}
+                  />
+                  <input
+                    type="text"
+                    name="city"
+                    value={userData.city}
+                    onChange={handleChange}
+                  />
+                  <input
+                    type="text"
+                    name="district"
+                    value={userData.district}
+                    onChange={handleChange}
+                  />
+                  <input
+                    type="text"
+                    name="zipcode"
+                    value={userData.zipcode}
+                    onChange={handleChange}
+                  />
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={hdlFileChange}
+                  />
                   <button onClick={handleSaveClick}>Save</button>
                   <button onClick={handleCancelClick}>Cancel</button>
                 </div>
               ) : (
                 <div>
                   <div className={ProfileCss.container_info}>
-                    <div className={ProfileCss.canter}>
-                  <img className={ProfileCss.image} src={userData.img_profile} alt="Profile" />
+                    <img
+                      className={ProfileCss.image}
+                      src={userData.img_profile}
+                      alt="Profile"
+                    />
 
-                    </div>
-                  <p>First Name: <span className={ProfileCss.info}>{userData.firstName}</span></p>
-                  <p>Last Name: <span className={ProfileCss.info}>{userData.lastName}</span></p>
-                  <p>Email: <span className={ProfileCss.info}>{userData.email}</span></p>
-                  <p>Phone Number: <span className={ProfileCss.info}>{userData.phone}</span></p>
-                  <p>Address : <span className={ProfileCss.info}>{userData.address}</span></p>
-                  <p>City : <span className={ProfileCss.info}>{userData.city}</span></p>
-                  <p>District : <span className={ProfileCss.info}>{userData.district}</span></p>
-                  <p>ZipCode : <span className={ProfileCss.info}>{userData.zipcode}</span></p>
-                  <button onClick={handleEditClick}>Edit</button>
+                    <p>
+                      First Name:{" "}
+                      <span className={ProfileCss.info}>
+                        {userData.firstName}
+                      </span>
+                    </p>
+                    <p>
+                      Last Name:{" "}
+                      <span className={ProfileCss.info}>
+                        {userData.lastName}
+                      </span>
+                    </p>
+                    <p>
+                      Email:{" "}
+                      <span className={ProfileCss.info}>{userData.email}</span>
+                    </p>
+                    <p>
+                      Phone Number:{" "}
+                      <span className={ProfileCss.info}>{userData.phone}</span>
+                    </p>
+                    <p>
+                      Address :{" "}
+                      <span className={ProfileCss.info}>
+                        {userData.address}
+                      </span>
+                    </p>
+                    <p>
+                      City :{" "}
+                      <span className={ProfileCss.info}>{userData.city}</span>
+                    </p>
+                    <p>
+                      District :{" "}
+                      <span className={ProfileCss.info}>
+                        {userData.district}
+                      </span>
+                    </p>
+                    <p>
+                      ZipCode :{" "}
+                      <span className={ProfileCss.info}>
+                        {userData.zipcode}
+                      </span>
+                    </p>
+                    <button onClick={handleEditClick}>Edit</button>
                   </div>
                 </div>
               )}

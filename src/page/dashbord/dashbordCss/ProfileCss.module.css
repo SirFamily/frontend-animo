@@ -14,9 +14,3 @@
     height: 252px;
    object-fit: cover;
 }
-
-.canter{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
