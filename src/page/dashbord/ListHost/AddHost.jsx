@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ModelPopup from "../../../component/ModelPopup";
 import axios from "axios";
-import AddHostCss from "./css/AddHostCss.module.css"
+import AddHostCss from "./css/AddHostCss.module.css";
 
 export default function AddHost({ onClose }) {
   const [input, setInput] = useState({
@@ -12,7 +12,6 @@ export default function AddHost({ onClose }) {
     photos: [],
   });
   const [imagePreview, setImagePreview] = useState(null);
-
 
   const hdlChange = (e) => {
     setInput((prv) => ({ ...prv, [e.target.name]: e.target.value }));
@@ -63,50 +62,56 @@ export default function AddHost({ onClose }) {
   return (
     <div>
       <ModelPopup>
+        <form
+          className={AddHostCss.container}
+          onSubmit={hdlSubmit}
+          encType="multipart/form-data"
+        >
+          <div className={AddHostCss.container_info}>
+            <h1>AddHost</h1>
 
-        <form className={AddHostCss.container} onSubmit={hdlSubmit} encType="multipart/form-data">
-        <div className={AddHostCss.container_info}>
-          <h1>AddHost</h1>
-
-          <input
-            placeholder="Name"
-            type="text"
-            name="hostName"
-            value={input.hostName}
-            onChange={hdlChange}
-            required
+            <input
+              placeholder="Name"
+              type="text"
+              name="hostName"
+              value={input.hostName}
+              onChange={hdlChange}
+              required
             />
 
-          <input
-            placeholder="location"
-            type="text"
-            name="location"
-            value={input.location}
-            onChange={hdlChange}
+            <input
+              placeholder="location"
+              type="text"
+              name="location"
+              value={input.location}
+              onChange={hdlChange}
             />
 
-          <input
-            placeholder="description"
-            type="text "
-            name="description"
-            value={input.description}
-            onChange={hdlChange}
+            <input
+              placeholder="description"
+              type="text "
+              name="description"
+              value={input.description}
+              onChange={hdlChange}
             />
 
-          <input
-            placeholder="propertyType"
-            type="text"
-            name="propertyType"
-            value={input.propertyType}
-            onChange={hdlChange}
+            <input
+              placeholder="propertyType"
+              type="text"
+              name="propertyType"
+              value={input.propertyType}
+              onChange={hdlChange}
             />
 
-<input
-          type="file"
-          multiple 
-          accept="image/png,image/jpeg"
-          onChange={hdlFileChange}
-          />
+            <input
+              type="file"
+              multiple
+              accept="image/png,image/jpeg"
+              onChange={hdlFileChange}
+            />
+          </div>
+          <div>
+
           <button>Add</button>
           <button onClick={onClose}>Close</button>
           </div>
