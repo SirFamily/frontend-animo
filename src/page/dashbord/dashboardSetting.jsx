@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Menu from "./menu/menu";
 import DashCss from "./dashbordCss/DashCss.module.css";
+import ProfileCss from "./dashbordCss/ProfileCss.module.css"
 import useAuth from '../../hooks/useAuth';
 import axios from 'axios';
 
@@ -41,7 +42,7 @@ export default function DashboardSetting() {
       formData.append("city", userData.city);
       formData.append("district", userData.district);
       formData.append("zipcode", userData.zipcode);
-      formData.append("avatar", userData.avatar); // เพิ่มรูปภาพ
+      formData.append("avatar", userData.avatar); 
       const rs = await axios.put(
         `http://localhost:8112/p/user/update`,
         formData,
@@ -73,6 +74,23 @@ export default function DashboardSetting() {
     setUserData((prv) => ({ ...prv, avatar: file, img_profile: URL.createObjectURL(file) }));
   };
 
+  const handleCancelClick = () => {
+    setUserData({
+      firstName: userData.firstName,
+      lastName: userData.lastName,
+      email: userData.email,
+      phone: userData.phone,
+      address: userData.address,
+      city: userData.city,
+      district: userData.district,
+      zipcode: userData.zipcode,
+      avatar: userData.avatar, 
+      img_profile: userData.img_profile, 
+    });
+    setIsEditing(false);
+  };
+  
+  
   return (
     <div className={DashCss.container}>
       <div className={DashCss.containerDash}>
@@ -86,8 +104,8 @@ export default function DashboardSetting() {
               </div>
 
               {isEditing ? (
-                <div>
-                  <input type="text" name="firstName" value={userData.firstName} onChange={handleChange} />
+                <div className={ProfileCss.container_info}>
+                  <input className={ProfileCss.info} type="text" name="firstName" value={userData.firstName} onChange={handleChange} />
                   <input type="text" name="lastName" value={userData.lastName} onChange={handleChange} />
                   <input type="text" name="email" value={userData.email} onChange={handleChange} disabled />
                   <input type="text" name="phone" value={userData.phone} onChange={handleChange} />
@@ -97,19 +115,25 @@ export default function DashboardSetting() {
                   <input type="text" name="zipcode" value={userData.zipcode} onChange={handleChange} />
                   <input type="file" accept="image/*" onChange={hdlFileChange} />
                   <button onClick={handleSaveClick}>Save</button>
+                  <button onClick={handleCancelClick}>Cancel</button>
                 </div>
               ) : (
                 <div>
-                  <p>First Name: {userData.firstName}</p>
-                  <p>Last Name: {userData.lastName}</p>
-                  <p>Email: {userData.email}</p>
-                  <p>Phone Number: {userData.phone}</p>
-                  <p>First Name: {userData.address}</p>
-                  <p>Last Name: {userData.city}</p>
-                  <p>Phone Number: {userData.district}</p>
-                  <p>Phone Number: {userData.zipcode}</p>
-                  <img src={userData.img_profile} alt="Profile" />
+                  <div className={ProfileCss.container_info}>
+                    <div className={ProfileCss.canter}>
+                  <img className={ProfileCss.image} src={userData.img_profile} alt="Profile" />
+
+                    </div>
+                  <p>First Name: <span className={ProfileCss.info}>{userData.firstName}</span></p>
+                  <p>Last Name: <span className={ProfileCss.info}>{userData.lastName}</span></p>
+                  <p>Email: <span className={ProfileCss.info}>{userData.email}</span></p>
+                  <p>Phone Number: <span className={ProfileCss.info}>{userData.phone}</span></p>
+                  <p>Address : <span className={ProfileCss.info}>{userData.address}</span></p>
+                  <p>City : <span className={ProfileCss.info}>{userData.city}</span></p>
+                  <p>District : <span className={ProfileCss.info}>{userData.district}</span></p>
+                  <p>ZipCode : <span className={ProfileCss.info}>{userData.zipcode}</span></p>
                   <button onClick={handleEditClick}>Edit</button>
+                  </div>
                 </div>
               )}
             </div>
