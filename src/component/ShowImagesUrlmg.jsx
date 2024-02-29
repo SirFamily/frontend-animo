@@ -1,5 +1,5 @@
 import React from "react";
-import ModelGridImages from "./ModelGridImages";
+import ModelGridImages from "./ModelGridImagesUrlImg";
 
 export default function ShowImages({ onClose, selectedImg }) {
   return (

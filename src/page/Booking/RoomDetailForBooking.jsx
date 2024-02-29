@@ -3,6 +3,8 @@ import ModelPopup from '../../component/ModelPopup';
 import Select from 'react-select';
 import axios from 'axios';
 import useAuth from '../../hooks/useAuth';
+import ShowImages from '../../component/ShowImagesUrlmg';
+import RoomDetailCss from "./css/RoomDetailCss.module.css"
 
 export default function RoomDetailForBooking({ onClose, hostId, selectedRoom }) {
   const [selectedTags, setSelectedTags] = useState([]);
@@ -10,6 +12,8 @@ export default function RoomDetailForBooking({ onClose, hostId, selectedRoom }) 
   const [checkInDate, setCheckInDate] = useState('');
   const [checkOutDate, setCheckOutDate] = useState('');
   const [pricePerNight, setPricePerNight] = useState(0);
+  const [selectedtImg, setSelectedImg] = useState(null);
+  const [isPopupOpenImg, setPopupOpenImg] = useState(false);
 
   const { user } = useAuth();
   const userId = user.id;
@@ -100,29 +104,50 @@ export default function RoomDetailForBooking({ onClose, hostId, selectedRoom }) 
     }
   };
 
+  const toggleImgPopup = (data) => {
+    setSelectedImg(data);
+    setPopupOpenImg(!isPopupOpenImg);
+  };
+console.log(selectedRoom.rooms_img[0].urlImg)
   return (
     <div>
       <ModelPopup>
-        <form onSubmit={hdlSubmit}>
-          <strong>{selectedRoom.roomName}</strong>
+        <div className={RoomDetailCss.container}>
+        <form className={RoomDetailCss.container_info} onSubmit={hdlSubmit}>
+          <div className={RoomDetailCss.textname}>Room : {selectedRoom.roomName}</div>
           <div>
             <hr />
-            <div>รูปภาพ:</div>
-            {selectedRoom.rooms_img.map((img) => (
+            {/* {selectedRoom.rooms_img.map((img) => (
               <img
                 key={img.id}
                 src={img.urlImg}
                 alt={`Room ${selectedRoom.roomName}`}
                 style={{ width: '100px', height: '100px', margin: '5px' }}
               />
-            ))}
+            ))} */}
+   <div
+              className={RoomDetailCss.petImage}
+              onClick={() => toggleImgPopup(selectedRoom.rooms_img)}
+              style={{
+                background: `url("${selectedRoom.rooms_img[0].urlImg}") no-repeat center/cover`,
+              }}
+            >
+              <p
+                className={RoomDetailCss.fixposition}
+              >
+                รูปภาพเพิ่มเติม
+              </p>
+              </div>
+
+
+
           </div>
           <hr />
-          <div>{selectedRoom.description}</div>
+          <div> <span className={RoomDetailCss.hightext}>{selectedRoom.description}</span></div>
           <hr />
-          <div>TypeRoom: {selectedRoom.typeRoom}</div>
-          <div>MaximumAnimal: {selectedRoom.maximumAnimal}</div>
-          <div>Price/Night: {selectedRoom.pricePerNight}</div>
+          <div>TypeRoom: <span className={RoomDetailCss.hightext}>{selectedRoom.typeRoom}</span></div>
+          <div>MaximumAnimal: <span className={RoomDetailCss.hightext}>{selectedRoom.maximumAnimal}</span></div>
+          <div>Price/Night: <span className={RoomDetailCss.hightext}>{selectedRoom.pricePerNight}</span></div>
           <hr />
           <div>
             <label>Select Tags:</label>
@@ -142,19 +167,26 @@ export default function RoomDetailForBooking({ onClose, hostId, selectedRoom }) 
             <input type="date" name="checkOutDate" value={checkOutDate} onChange={handleCheckOutDateChange} />
           </div>
           <div>
-            สัตว์เลี้ยงที่เข้าพัก : {selectedTags.length}
+            สัตว์เลี้ยงที่เข้าพัก : <span className={RoomDetailCss.hightext}>{selectedTags.length}</span>
           </div>
           <hr />
           <div>
-            ระยะห่างของวัน: {calculateDateDifference()} วัน
+            ระยะห่างของวัน: <span className={RoomDetailCss.hightext}>{calculateDateDifference()}</span> วัน
           </div>
           <div>
-            ราคาทั้งหมด: {calculateTotalPrice()} บาท
+            ราคาทั้งหมด: <span className={RoomDetailCss.hightext}>{calculateTotalPrice()}</span> บาท
           </div>
           <hr />
           <button>Booking</button>
           <button onClick={onClose}>Close</button>
         </form>
+        </div>
+        {isPopupOpenImg && (
+          <ShowImages
+            onClose={toggleImgPopup}
+            selectedImg={selectedtImg}
+          />
+        )}
       </ModelPopup>
     </div>
   );

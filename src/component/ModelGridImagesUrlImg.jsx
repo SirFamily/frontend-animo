@@ -35,7 +35,7 @@ console.log(selectedImg)
           {selectedImg.map((image, index) => (
             <img
               key={index}
-              src={image.imgUrl}
+              src={image.urlImg}
               className={GridImagesCss.imageItem}
               onClick={() => handleImageClick(image, index)}
             />
@@ -46,7 +46,7 @@ console.log(selectedImg)
             <img
               onClick={handleClosePopup}
               ref={imageRef}
-              src={selectedImg[currentIndex].imgUrl}
+              src={selectedImg[currentIndex].urlImg}
               alt={`Large Image ${selectedImg[currentIndex].id}`}
               className={GridImagesCss.largeImage}
             />

@@ -2,14 +2,14 @@ import React, { useEffect, useState } from "react";
 import ModelPopup from "../../component/ModelPopup";
 import axios from "axios";
 import RoomDetailForBooking from "./RoomDetailForBooking";
-import ShowImagesHost from "./ShowImagesHost";
 import HostDetailCss from "./css/HostDetail.module.css";
+import ShowImages from "../../component/ShowImages";
 
 export default function HostDetailForBooking({ onClose, selectedHost }) {
   const [roomsData, setRoomsData] = useState([]);
   const [selectedRoom, setSelectedRoom] = useState(null);
   const [isPopupOpen, setPopupOpen] = useState(false);
-  const [selectedHostImg, setSelectedHostImg] = useState(null);
+  const [selectedtImg, setSelectedImg] = useState(null);
   const [isPopupOpenImg, setPopupOpenImg] = useState(false);
 
   const hostId = selectedHost.id;
@@ -19,7 +19,7 @@ export default function HostDetailForBooking({ onClose, selectedHost }) {
   };
 
   const toggleImgPopup = (data) => {
-    setSelectedHostImg(data);
+    setSelectedImg(data);
     setPopupOpenImg(!isPopupOpenImg);
   };
   useEffect(() => {
@@ -57,7 +57,6 @@ export default function HostDetailForBooking({ onClose, selectedHost }) {
             >
               <p
                 className={HostDetailCss.fixposition}
-                onClick={() => toggleImgPopup(selectedHost.Host_img)}
               >
                 รูปภาพเพิ่มเติม
               </p>
@@ -123,9 +122,9 @@ export default function HostDetailForBooking({ onClose, selectedHost }) {
           />
         )}
         {isPopupOpenImg && (
-          <ShowImagesHost
+          <ShowImages
             onClose={toggleImgPopup}
-            selectedHostImg={selectedHostImg}
+            selectedImg={selectedtImg}
           />
         )}
       </ModelPopup>
