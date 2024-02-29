@@ -65,9 +65,9 @@ export default function ListHost(props) {
             }}
           >
               <div className={DashCss.text}>{data.hostName}</div>
-              <div style={{ color: data.publish ? "#00FF00" : "#FF0000" }}>
+              {/* <div style={{ color: data.publish ? "#00FF00" : "#FF0000" }}>
           {data.publish ? "เผยแพร์" : "ไม่เผยแพร์"}
-        </div>
+        </div> */}
             </div>
           </div>
         ))

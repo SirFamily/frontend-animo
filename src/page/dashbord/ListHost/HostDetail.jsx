@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import ModelPopup from "../../../component/ModelPopup";
 import axios from "axios";
+import HostDetailCss from "./css/HostDetail.module.css";
 
 export default function HostDetail({ onClose, host }) {
   const [isEditMode, setIsEditMode] = useState(false);
   const [editedHostData, setEditedHostData] = useState({ ...host });
-  const [isChecked, setIsChecked] = useState(false); // New state for the checkbo
+
+  console.log(editedHostData);
 
   const hdlDelete = async () => {
     try {
@@ -75,89 +77,121 @@ export default function HostDetail({ onClose, host }) {
   };
 
   const hdlChangeCheckbox = () => {
-    // Update the state of editedHostData.publish when the checkbox changes
     setEditedHostData((prev) => ({ ...prev, publish: !prev.publish }));
   };
 
   return (
     <>
       <ModelPopup>
-        {isEditMode ? (
-          <>
-            <input
-              placeholder="Name"
-              type="text"
-              name="hostName"
-              value={editedHostData.hostName}
-              onChange={hdlChange}
-              required
-            />
-
-            <input
-              placeholder="location"
-              type="text"
-              name="location"
-              value={editedHostData.location}
-              onChange={hdlChange}
-            />
-
-            <input
-              placeholder="description"
-              type="text"
-              name="description"
-              value={editedHostData.description}
-              onChange={hdlChange}
-            />
-
-            <input
-              placeholder="propertyType"
-              type="text"
-              name="propertyType"
-              value={editedHostData.propertyType}
-              onChange={hdlChange}
-            />
-            <input
-              type="checkbox"
-              name="publish"
-              id="publish"
-              checked={editedHostData.publish}
-              onChange={hdlChangeCheckbox} // Handle checkbox change
-            />
-             <div style={{ color: editedHostData.publish ? "#00FF00" : "#FF0000" }}>
-          {editedHostData.publish ? "เผยแพร์" : "ไม่เผยแพร์"}
-        </div>
-          </>
-        ) : (
-          <>
-            {editedHostData.Host_img.map((img) => (
+        <div className={HostDetailCss.container}>
+          {isEditMode ? (
+            <>
               <img
+                className={HostDetailCss.petImage}
+                src={editedHostData.Host_img[0].imgUrl}
+              />
+              <div className={HostDetailCss.container_info}>
+                <div className={HostDetailCss.textname}>
+                  <input
+                    placeholder="Name"
+                    type="text"
+                    name="hostName"
+                    value={editedHostData.hostName}
+                    onChange={hdlChange}
+                    required
+                  />
+                </div>
+
+                <input
+                  placeholder="location"
+                  type="text"
+                  name="location"
+                  value={editedHostData.location}
+                  onChange={hdlChange}
+                />
+
+                <input
+                  placeholder="description"
+                  type="text"
+                  name="description"
+                  value={editedHostData.description}
+                  onChange={hdlChange}
+                />
+
+                <input
+                  placeholder="propertyType"
+                  type="text"
+                  name="propertyType"
+                  value={editedHostData.propertyType}
+                  onChange={hdlChange}
+                />
+
+                <div
+                  style={{
+                    color: editedHostData.publish ? "#00FF00" : "#FF0000",
+                  }}
+                >
+                  <input
+                    type="checkbox"
+                    name="publish"
+                    id="publish"
+                    checked={editedHostData.publish}
+                    onChange={hdlChangeCheckbox}
+                  />
+                  {editedHostData.publish ? "เผยแพร์" : "ไม่เผยแพร์"}
+                </div>
+              </div>
+            </>
+          ) : (
+            <>
+           
+
+              <img
+                className={HostDetailCss.petImage}
+                src={editedHostData.Host_img[0].imgUrl}
+              />
+
+              {/* {editedHostData.Host_img.map((img) => (
+              <img
+              className={HostDetailCss.petImage}
                 key={img.id}
                 src={img.imgUrl}
                 alt={`Host Image ${img.id}`}
                 style={{ width: `50px` }}
               />
-            ))}
-            <div>{editedHostData.hostName}</div>
-            <div>{editedHostData.location}</div>
-            <div>{editedHostData.description}</div>
-            <div>{editedHostData.propertyType}</div>
-            <div style={{ color: editedHostData.publish ? "#00FF00" : "#FF0000" }}>
-          {editedHostData.publish ? "เผยแพร์" : "ไม่เผยแพร์"}
+              
+            ))} */}
+              <div className={HostDetailCss.container_info}>
+              <div className={HostDetailCss.textname}>
+                {editedHostData.hostName}
+              </div>
+                  <div>{editedHostData.location}</div>
+                  <div>{editedHostData.description}</div>
+                  <div>{editedHostData.propertyType}</div>
+                  <div
+                    style={{
+                      color: editedHostData.publish ? "#00FF00" : "#FF0000",
+                    }}
+                  >
+                    {editedHostData.publish ? "เผยแพร์" : "ไม่เผยแพร์"}
+                  </div>
+        
+              </div>
+            </>
+          )}
+          {isEditMode ? (
+            <>
+              <button onClick={hdlSaveClick}>Save</button>
+              <button onClick={hdlCancelClick}>Cancel</button>
+              <button onClick={hdlDelete}>Delete</button>
+            </>
+          ) : (
+            <>
+              <button onClick={hdlEditClick}>Edit</button>
+              <button onClick={onClose}>Close</button>
+            </>
+          )}
         </div>
-          </>
-        )}
-        {isEditMode ? (
-          <>
-            <button onClick={hdlSaveClick}>Save</button>
-            <button onClick={hdlCancelClick}>Cancel</button>
-            <button onClick={hdlDelete}>Delete</button>
-          </>
-        ) : (
-          <>
-            <button onClick={hdlEditClick}>Edit</button>
-            <button onClick={onClose}>Close</button>
-          </>
-        )}
       </ModelPopup>
     </>
   );
