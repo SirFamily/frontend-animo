@@ -23,18 +23,6 @@ export default function dashboardRequest() {
             </div>
           </div>
         </div>
-
-        <div className={DashCss.bord}>
-          <div className={DashCss.inBord}>
-            <div>
-              <h1>Welcome to the Room panel!</h1>
-              <div className={DashCss.line}></div>
-            </div>
-            <div className={DashCss.boxListPet}>
-             ads
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </div>

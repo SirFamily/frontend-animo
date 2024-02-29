@@ -43,7 +43,7 @@ return (
             <div key={booking.id} className={DashCss.listPet} onClick={() => togglePopup(booking)}>
               <div>
                 <div>ชื่อห้อง: {booking.room.roomName}</div>
-                <div>ชื่อผู้เข้าพัก: {booking.user.firstName} {booking.user.lastName}</div>
+                <div>ชื่อเจ้าของสัตว์เลียง: {booking.user.firstName} {booking.user.lastName}</div>
                 <div>จำนวนสัตว์ที่เข้าพัก: {booking.pets_count_booking.length}</div>
                 <div>วันเวลา: {new Date(booking.checkInDate).toLocaleDateString()} - {new Date(booking.checkOutDate).toLocaleDateString()}</div>
                 <div>Status: {booking.status_booking[0].bookingStatus}</div>
