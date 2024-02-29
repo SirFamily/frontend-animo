@@ -144,8 +144,6 @@ export default function HostDetail({ onClose, host }) {
             </>
           ) : (
             <>
-           
-
               <img
                 className={HostDetailCss.petImage}
                 src={editedHostData.Host_img[0].imgUrl}
@@ -162,20 +160,19 @@ export default function HostDetail({ onClose, host }) {
               
             ))} */}
               <div className={HostDetailCss.container_info}>
-              <div className={HostDetailCss.textname}>
-                {editedHostData.hostName}
-              </div>
-                  <div>{editedHostData.location}</div>
-                  <div>{editedHostData.description}</div>
-                  <div>{editedHostData.propertyType}</div>
-                  <div
+                <div className={HostDetailCss.textname}>
+                  {editedHostData.hostName}
+                </div>
+                <div>{editedHostData.location}</div>
+                <div>{editedHostData.description}</div>
+                <div>{editedHostData.propertyType}</div>
+                <div
                     style={{
                       color: editedHostData.publish ? "#00FF00" : "#FF0000",
                     }}
                   >
                     {editedHostData.publish ? "เผยแพร์" : "ไม่เผยแพร์"}
                   </div>
-        
               </div>
             </>
           )}

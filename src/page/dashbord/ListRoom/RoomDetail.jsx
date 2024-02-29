@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import ModelPopup from "../../../component/ModelPopup";
 import axios from "axios";
+import RoomDetailCss from "./css/RoomDetailCss.module.css";
+import defaultImageUrl from "../../../assets/picture.png";
 
 export default function RoomDetail({ onClose, selectedRoomEdit }) {
   const [isEditMode, setIsEditMode] = useState(false);
@@ -77,69 +79,101 @@ export default function RoomDetail({ onClose, selectedRoomEdit }) {
   };
   return (
     <ModelPopup>
-      {isEditMode ? (
-        <>
-          <input
-            placeholder="Name"
-            type="text"
-            name="roomName"
-            value={editedRoomData.roomName}
-            onChange={hdlChange}
-            required
-          />
+      <div className={RoomDetailCss.container}>
+        {isEditMode ? (
+          <>
+            <img
+              src={
+                editedRoomData.rooms_img[0]
+                  ? editedRoomData.rooms_img[0]?.urlImg
+                  : defaultImageUrl
+              }
+              alt={`Room ${editedRoomData.roomName}`}
+              className={RoomDetailCss.petImage}
+            />
+            <div className={RoomDetailCss.container_info}>
+              <input
+                placeholder="Name"
+                type="text"
+                name="roomName"
+                className={RoomDetailCss.textname}
+                value={editedRoomData.roomName}
+                onChange={hdlChange}
+                required
+              />
 
-          <input
-            placeholder="description"
-            type="text"
-            name="description"
-            value={editedRoomData.description}
-            onChange={hdlChange}
-          />
+              <input
+                placeholder="description"
+                type="text"
+                name="description"
+                value={editedRoomData.description}
+                onChange={hdlChange}
+              />
 
-          <input
-            placeholder="maximumAnimal"
-            type="text"
-            name="maximumAnimal"
-            value={editedRoomData.maximumAnimal}
-            onChange={hdlChange}
-          />
+              <input
+                placeholder="maximumAnimal"
+                type="text"
+                name="maximumAnimal"
+                value={editedRoomData.maximumAnimal}
+                onChange={hdlChange}
+              />
 
-          <input
-            placeholder="pricePerNight"
-            type="text"
-            name="pricePerNight"
-            value={editedRoomData.pricePerNight}
-            onChange={hdlChange}
-          />
-          <input
-            placeholder="typeRoom"
-            type="text"
-            name="typeRoom"
-            value={editedRoomData.typeRoom}
-            onChange={hdlChange}
-          />
-        </>
-      ) : (
-        <>
-          <div>{editedRoomData.roomName}</div>
-          <div>{editedRoomData.description}</div>
-          <div>{editedRoomData.maximumAnimal}</div>
-          <div>{editedRoomData.pricePerNight}</div>
-          <div>{editedRoomData.typeRoom}</div>
-        </>
-      )}
-      {isEditMode ? (
-        <>
-          <button onClick={hdlSaveClick}>Save</button>
-          <button onClick={hdlCancelClick}>Cancel</button>
-          <button onClick={hdlDelClick}>Delete</button>
-        </>
-      ) : (
-        <>
-          <button onClick={hdlEditClick}>Edit</button>
-          <button onClick={onClose}>Close</button>
-        </>
-      )}
+              <input
+                placeholder="pricePerNight"
+                type="text"
+                name="pricePerNight"
+                value={editedRoomData.pricePerNight}
+                onChange={hdlChange}
+              />
+              <input
+                placeholder="typeRoom"
+                type="text"
+                name="typeRoom"
+                value={editedRoomData.typeRoom}
+                onChange={hdlChange}
+              />
+            </div>
+          </>
+        ) : (
+          <>
+            {/* {editedRoomData.rooms_img.map((img) => (
+              <img key={img.id} src={img.urlImg} alt={`Room ${editedRoomData.roomName}`} />
+      ))} */}
+
+            <img
+              src={
+                editedRoomData.rooms_img[0]
+                  ? editedRoomData.rooms_img[0]?.urlImg
+                  : defaultImageUrl
+              }
+              alt={`Room ${editedRoomData.roomName}`}
+              className={RoomDetailCss.petImage}
+            />
+            <div className={RoomDetailCss.container_info}>
+              <div className={RoomDetailCss.textname}>
+                {editedRoomData.roomName}
+              </div>
+              <div>{editedRoomData.description}</div>
+              <div>{editedRoomData.maximumAnimal}</div>
+              <div>{editedRoomData.pricePerNight}</div>
+              <div>{editedRoomData.typeRoom}</div>
+            </div>
+          </>
+        )}
+
+        {isEditMode ? (
+          <>
+            <button onClick={hdlSaveClick}>Save</button>
+            <button onClick={hdlCancelClick}>Cancel</button>
+            <button onClick={hdlDelClick}>Delete</button>
+          </>
+        ) : (
+          <>
+            <button onClick={hdlEditClick}>Edit</button>
+            <button onClick={onClose}>Close</button>
+          </>
+        )}
+      </div>
     </ModelPopup>
   );
 }
