@@ -29,7 +29,7 @@ export default function ListRequest() {
     <div>
     {listRequest.map((host) =>
       host.Bookings.map((booking) => {
-        if (booking.status_booking[0].bookingStatus === "CANCELLED" || booking.status_booking[0].bookingStatus === "CONPLETED") {
+        if (booking.status_booking[0].bookingStatus === "CANCELLED" || booking.status_booking[0].bookingStatus === "COMPLETED") {
           return (
             <div key={booking.id} className={DashCss.listPet}>
               <div>
