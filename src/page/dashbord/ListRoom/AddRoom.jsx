@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ModelPopup from "../../../component/ModelPopup";
 import axios from "axios";
+import AddRoomCss from "./css/AddRoomCss.module.css"
 
 export default function AddRoom({ onClose, selectedHost }) {
   const [input, setInput] = useState({
@@ -63,6 +64,9 @@ export default function AddRoom({ onClose, selectedHost }) {
   return (
     <div>
       <ModelPopup>
+        <div className={AddRoomCss.container}>
+<div className={AddRoomCss.container_info}>
+
         <input
           placeholder="Name"
           type="text"
@@ -70,7 +74,7 @@ export default function AddRoom({ onClose, selectedHost }) {
           value={input.roomName}
           onChange={hdlChange}
           required
-        />
+          />
         <input
           placeholder="description"
           type="text"
@@ -78,7 +82,7 @@ export default function AddRoom({ onClose, selectedHost }) {
           value={input.description}
           onChange={hdlChange}
           required
-        />
+          />
         <input
           placeholder="maximumAnimal"
           type="text"
@@ -86,7 +90,7 @@ export default function AddRoom({ onClose, selectedHost }) {
           value={input.maximumAnimal}
           onChange={hdlChange}
           required
-        />
+          />
         <input
           placeholder="pricePerNight"
           type="text"
@@ -94,7 +98,7 @@ export default function AddRoom({ onClose, selectedHost }) {
           value={input.pricePerNight}
           onChange={hdlChange}
           required
-        />
+          />
         <input
           placeholder="typeRoom"
           type="text"
@@ -102,13 +106,15 @@ export default function AddRoom({ onClose, selectedHost }) {
           value={input.typeRoom}
           onChange={hdlChange}
           required
-        />
+          />
         <input
           type="file"
           multiple // Allow multiple file selection
           accept="image/png,image/jpeg"
           onChange={hdlFileChange}
-        />
+          />
+          </div>
+          </div>
         <button onClick={hdlSubmit}>Add</button>
         <button onClick={onClose}>Close</button>
       </ModelPopup>
