@@ -90,19 +90,6 @@
     color: #00545F;
     font-weight: bold;
 }
-.btsubmit {
-    display: flex;
-    height: 36px;
-    padding: 9px 30px;
-    align-items: center;
-    gap: 10px;
-    flex-shrink: 0;
-    border-radius: 10px;
-    background: #00545F;
-    color: #ffffff;
-    transition: background-color 0.3s ease-in-out;
-font-weight: 400;
-}
 
 .custom_hr {
     width: 380px;

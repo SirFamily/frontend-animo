@@ -78,12 +78,19 @@ export default function RoomDetailForBooking({ onClose, hostId, selectedRoom }) 
 
   const hdlSubmit = async (e) => {
     e.preventDefault();
-    const formData ={
-      checkInDate:new Date(checkInDate),   
-      checkOutDate:new Date(checkOutDate),
-      totalPrice:calculateTotalPrice(),
+  
+    if (!checkInDate || !checkOutDate || selectedTags.length === 0) {
+      alert("Please fill in all the required fields.");
+      return;
+    }
+  
+    const formData = {
+      checkInDate: new Date(checkInDate),
+      checkOutDate: new Date(checkOutDate),
+      totalPrice: calculateTotalPrice(),
       selectedTags,
     };
+  
     try {
       const token = localStorage.getItem("token");
       const response = await axios.post(
@@ -95,14 +102,18 @@ export default function RoomDetailForBooking({ onClose, hostId, selectedRoom }) 
           },
         }
       );
-      console.log(formData)
+  
       if (response.status === 200) {
-        alert("จองสำเร็จ");
+        alert("Booking successful");
         onClose();
       }
     } catch (error) {
+      // Handle error
+      console.error(error);
+      alert("Error occurred while processing the booking.");
     }
   };
+  
 
   const toggleImgPopup = (data) => {
     setSelectedImg(data);
@@ -167,18 +178,18 @@ console.log(selectedRoom.rooms_img[0].urlImg)
             <input type="date" name="checkOutDate" value={checkOutDate} onChange={handleCheckOutDateChange} />
           </div>
           <div>
-            สัตว์เลี้ยงที่เข้าพัก : <span className={RoomDetailCss.hightext}>{selectedTags.length}</span>
+          Pet : <span className={RoomDetailCss.hightext}>{selectedTags.length}</span>
           </div>
           <hr />
           <div>
-            ระยะห่างของวัน: <span className={RoomDetailCss.hightext}>{calculateDateDifference()}</span> วัน
+          Length of a day: <span className={RoomDetailCss.hightext}>{calculateDateDifference()}</span> Day
           </div>
           <div>
-            ราคาทั้งหมด: <span className={RoomDetailCss.hightext}>{calculateTotalPrice()}</span> บาท
+          Total price: <span className={RoomDetailCss.hightext}>{calculateTotalPrice()}</span> baht
           </div>
           <hr />
-          <button>Booking</button>
-          <button onClick={onClose}>Close</button>
+          <button className={RoomDetailCss.btb}>Booking</button>
+          <button className={RoomDetailCss.btc} onClick={onClose}>Close</button>
         </form>
         </div>
         {isPopupOpenImg && (

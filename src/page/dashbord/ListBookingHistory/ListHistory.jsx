@@ -39,22 +39,12 @@ export default function ListHistory() {
           <div>
       {listBookingHistory.map((history) => (
         <div key={history.id} className={DashCss.listPet}>
-          <div
-            className={DashCss.descPet}
-            style={{
-              background: `linear-gradient(0deg, rgba(0, 0, 0, 0.50) 0%, rgba(0, 0, 0, 0.00) 100%), url(${
-                "https://t4.ftcdn.net/jpg/04/73/25/49/360_F_473254957_bxG9yf4ly7OBO5I0O5KABlN930GwaMQz.jpg"
-              }) lightgray 50% / cover no-repeat`,
-            }}
-          >
-            <div className={DashCss.text}>{history.host.hostName}</div>
-          </div>
 
           <div>
             <div>{`โรงแรม ${history.host.hostName}`}</div>
             <div>{`ห้อง ${history.room.roomName}`}</div>
             <div>{`จำนวน ${history.pets_count_booking.length} ตัว`}</div>
-            <div>{`เข้าพัก ${history.checkInDate} ถึง ${history.checkOutDate}`}</div>
+            <div>{`เข้าพัก ${new Date(history.checkInDate).toLocaleDateString()}  ถึง ${new Date(history.checkOutDate).toLocaleDateString()} `}</div>
             <div>{`สถานะ: ${history.status_booking[0].bookingStatus}`}</div>
           </div>
         </div>

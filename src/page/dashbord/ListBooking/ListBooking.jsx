@@ -34,16 +34,7 @@ export default function ListBooking() {
     <div>
       {listBooking.map((booking) => (
         <div key={booking.id} className={DashCss.listPet}>
-          <div
-            className={DashCss.descPet}
-            style={{
-              background: `linear-gradient(0deg, rgba(0, 0, 0, 0.50) 0%, rgba(0, 0, 0, 0.00) 100%), url(${
-                "https://t4.ftcdn.net/jpg/04/73/25/49/360_F_473254957_bxG9yf4ly7OBO5I0O5KABlN930GwaMQz.jpg"
-              }) lightgray 50% / cover no-repeat`,
-            }}
-          >
-            <div className={DashCss.text}>{booking.host.hostName}</div>
-          </div>
+      
 
           <div>
             <div>{`โรงแรม ${booking.host.hostName}`}</div>

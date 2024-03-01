@@ -107,7 +107,7 @@ export default function HostDetailForBooking({ onClose, selectedHost }) {
             <br />
             <hr />
             <div className={HostDetailCss.btarea}>
-            <button onClick={onClose}>Close</button>
+            <button className={HostDetailCss.bt} onClick={onClose}>Close</button>
           </div>
           </div>
 

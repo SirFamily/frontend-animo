@@ -79,3 +79,25 @@ gap:  10px;
 .texthigh{
     font-weight: bolder;
 }
+
+.bt {
+    display: flex;
+    height: 36px;
+    padding: 9px 30px;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: #e71304;
+    color: #ffffff;
+    transition: background-color 0.3s ease-in-out;
+font-weight: 400;
+margin: 10px 0px 10px 0px;
+}
+
+
+.bt:hover{
+    background-color: #fc9292;
+    color: #000000;
+
+}
