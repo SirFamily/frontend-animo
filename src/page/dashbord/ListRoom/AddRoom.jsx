@@ -115,8 +115,8 @@ export default function AddRoom({ onClose, selectedHost }) {
           />
           </div>
           </div>
-        <button onClick={hdlSubmit}>Add</button>
-        <button onClick={onClose}>Close</button>
+        <button className={AddRoomCss.btb} onClick={hdlSubmit}>Add</button>
+        <button className={AddRoomCss.btc} onClick={onClose}>Close</button>
       </ModelPopup>
     </div>
   );

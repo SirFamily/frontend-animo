@@ -11,7 +11,7 @@ export default function AddHost({ onClose }) {
     propertyType: "",
     photos: [],
   });
-  const [imagePreview, setImagePreview] = useState(null);
+  // const [imagePreview, setImagePreview] = useState(null);
 
   const hdlChange = (e) => {
     setInput((prv) => ({ ...prv, [e.target.name]: e.target.value }));
@@ -112,8 +112,8 @@ export default function AddHost({ onClose }) {
           </div>
           <div>
 
-          <button>Add</button>
-          <button onClick={onClose}>Close</button>
+          <button className={AddHostCss.btb} >Add</button>
+          <button className={AddHostCss.btc} onClick={onClose}>Close</button>
           </div>
         </form>
       </ModelPopup>

@@ -163,14 +163,14 @@ export default function RoomDetail({ onClose, selectedRoomEdit }) {
 
         {isEditMode ? (
           <>
-            <button onClick={hdlSaveClick}>Save</button>
-            <button onClick={hdlCancelClick}>Cancel</button>
-            <button onClick={hdlDelClick}>Delete</button>
+            <button className={AddRoomCss.btb} onClick={hdlSaveClick}>Save</button>
+            <button className={AddRoomCss.btc} onClick={hdlCancelClick}>Cancel</button>
+            <button className={AddRoomCss.btc} onClick={hdlDelClick}>Delete</button>
           </>
         ) : (
           <>
-            <button onClick={hdlEditClick}>Edit</button>
-            <button onClick={onClose}>Close</button>
+            <button className={AddRoomCss.bte} onClick={hdlEditClick}>Edit</button>
+            <button className={AddRoomCss.btc} onClick={onClose}>Close</button>
           </>
         )}
       </div>

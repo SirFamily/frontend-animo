@@ -178,14 +178,14 @@ export default function HostDetail({ onClose, host }) {
           )}
           {isEditMode ? (
             <>
-              <button onClick={hdlSaveClick}>Save</button>
-              <button onClick={hdlCancelClick}>Cancel</button>
-              <button onClick={hdlDelete}>Delete</button>
+              <button className={HostDetailCss.btb} onClick={hdlSaveClick}>Save</button>
+              <button className={HostDetailCss.btc} onClick={hdlCancelClick}>Cancel</button>
+              <button className={HostDetailCss.btc} onClick={hdlDelete}>Delete</button>
             </>
           ) : (
             <>
-              <button onClick={hdlEditClick}>Edit</button>
-              <button onClick={onClose}>Close</button>
+              <button className={HostDetailCss.bte} onClick={hdlEditClick}>Edit</button>
+              <button className={HostDetailCss.btc} onClick={onClose}>Close</button>
             </>
           )}
         </div>
