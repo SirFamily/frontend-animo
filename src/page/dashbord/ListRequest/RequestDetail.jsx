@@ -63,7 +63,9 @@ export default function RequestDetail({ onClose, data }) {
         <div className={RequestCss.container}>
           <div className={RequestCss.container_info}>
             <div>
-              <div className={RequestCss.textname}>Room : {data.room.roomName}</div>
+              <div className={RequestCss.textname}>
+                Room : {data.room.roomName}
+              </div>
               <img
                 className={RequestCss.petImage}
                 src={data.user.img_profile}
@@ -106,22 +108,33 @@ export default function RequestDetail({ onClose, data }) {
                 </div>
               ))}
             </div>
-            <div>Totle price <span className={RequestCss.hightext}>{data.totalPrice}</span></div>
+            <div>
+              Totle price{" "}
+              <span className={RequestCss.hightext}>{data.totalPrice}</span>
+            </div>
           </div>
         </div>
 
         {status === "PENDING" && (
           <>
-            <button onClick={hdlCancel}>cancel</button>
-            <button onClick={hdlConfirmed}>confirm</button>
+            <button className={RequestCss.btc} onClick={hdlCancel}>
+              cancel
+            </button>
+            <button className={RequestCss.btb} onClick={hdlConfirmed}>
+              confirm
+            </button>
           </>
         )}
 
         {status === "CONFIRMED" && (
-          <button onClick={hdlComplete}>เชคเอ้า</button>
+          <button className={RequestCss.btb} onClick={hdlComplete}>
+            Check out
+          </button>
         )}
 
-        <button onClick={onClose}>Close</button>
+        <button className={RequestCss.btc} onClick={onClose}>
+          Close
+        </button>
       </ModelPopup>
     </div>
   );

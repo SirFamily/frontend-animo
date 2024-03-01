@@ -251,16 +251,17 @@ export default function PetDetail({ onClose, petData }) {
       </div>
       {isEditMode ? (
         <>
-          <button onClick={hdlSaveClick}>Save</button>
-          <button onClick={hdlCancelClick}>Cancel</button>
-          <button onClick={hdlDelClick}>Delete</button>
+          <button className={PetDetailCss.btb} onClick={hdlSaveClick}>Save</button>
+          <button className={PetDetailCss.btc} onClick={hdlCancelClick}>Cancel</button>
+          <button className={PetDetailCss.btc} onClick={hdlDelClick}>Delete</button>
         </>
       ) : (
         <>
-          <button onClick={hdlEditClick}>Edit</button>
+          <button className={PetDetailCss.bte} onClick={hdlEditClick}>Edit</button>
+          <button className={PetDetailCss.btc} onClick={onClose}>Close</button>
         </>
       )}
-      <button onClick={onClose}>Close</button>
+      
     </ModelPopup>
   );
 }

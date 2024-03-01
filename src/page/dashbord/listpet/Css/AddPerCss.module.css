@@ -24,3 +24,47 @@
     object-fit: cover;
 
 }
+
+.btc {
+    display: flex;
+    height: 36px;
+    padding: 9px 30px;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: #e71304;
+    color: #ffffff;
+    transition: background-color 0.3s ease-in-out;
+font-weight: 400;
+margin: 10px 0px 10px 0px;
+}
+
+
+.btc:hover{
+    background-color: #fc9292;
+    color: #000000;
+
+}
+
+.btb {
+    display: flex;
+    height: 36px;
+    padding: 9px 30px;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: #62b800;
+    color: #ffffff;
+    transition: background-color 0.3s ease-in-out;
+font-weight: 400;
+margin: 10px 0px 10px 0px;
+}
+
+
+.btb:hover{
+    background-color: #9eff91;
+    color: #007022;
+
+}

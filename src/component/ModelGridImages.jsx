@@ -61,7 +61,7 @@ console.log(selectedImg)
             </div>
           </div>
         )}
-        <button onClick={onClose}>
+        <button className={GridImagesCss.btc} onClick={onClose}>
           close
         </button>
         </div>

@@ -160,8 +160,15 @@ export default function DashboardSetting() {
                     accept="image/*"
                     onChange={hdlFileChange}
                   />
-                  <button onClick={handleSaveClick}>Save</button>
-                  <button onClick={handleCancelClick}>Cancel</button>
+                  <button className={ProfileCss.btb} onClick={handleSaveClick}>
+                    Save
+                  </button>
+                  <button
+                    className={ProfileCss.btc}
+                    onClick={handleCancelClick}
+                  >
+                    Cancel
+                  </button>
                 </div>
               ) : (
                 <div>
@@ -214,7 +221,12 @@ export default function DashboardSetting() {
                         {userData.zipcode}
                       </span>
                     </p>
-                    <button onClick={handleEditClick}>Edit</button>
+                    <button
+                      className={ProfileCss.bte}
+                      onClick={handleEditClick}
+                    >
+                      Edit
+                    </button>
                   </div>
                 </div>
               )}

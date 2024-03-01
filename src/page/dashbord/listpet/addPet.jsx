@@ -158,8 +158,8 @@ export default function AddPet({ onClose }) {
               onChange={hdlChange}
             />
             <div>
-              <button>Add</button>
-              <button onClick={onClose}>Close</button>
+              <button className={AddPetCss.btb}>Add</button>
+              <button className={AddPetCss.btc} onClick={onClose}>Close</button>
             </div>
           </form>
         </div>
