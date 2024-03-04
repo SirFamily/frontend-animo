@@ -15,7 +15,7 @@ export default function dashboardRequest() {
         <div className={DashCss.bord}>
           <div className={DashCss.inBord}>
             <div>
-              <h1>Welcome to the Host panel!</h1>
+              <h1>Welcome to the Request panel!</h1>
               <div className={DashCss.line}></div>
             </div>
             <div className={DashCss.boxListPet}>
