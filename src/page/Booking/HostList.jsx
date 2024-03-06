@@ -9,10 +9,21 @@ export default function HostList() {
   const [isPopupOpen, setPopupOpen] = useState(false);
   const [selectedHost, setSelectedHost] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
+  const [isOpenCount, setIsOpenCount] = useState(false);
   const [selectedLocation, setSelectedLocation] = useState("");
   const [checkInDate, setCheckInDate] = useState("");
   const [checkOutDate, setCheckOutDate] = useState("");
+  const [guests, setGuests] = useState(1);
 
+  const incrementGuests = () => {
+    setGuests((prevGuests) => prevGuests + 1);
+  };
+
+  const decrementGuests = () => {
+    if (guests > 1) {
+      setGuests((prevGuests) => prevGuests - 1);
+    }
+  };
   const formatDate = (date) => {
     const options = { day: "numeric", month: "short" };
     return new Date(date).toLocaleDateString("en-US", options);
@@ -20,6 +31,10 @@ export default function HostList() {
 
   const handleClick = (e) => {
     setIsOpen((prevState) => !prevState);
+  };
+
+  const handleCountClick = (e) => {
+    setIsOpenCount((prevState) => !prevState);
   };
 
   const handleLocationChange = (e) => {
@@ -121,12 +136,36 @@ export default function HostList() {
               </div>
             </div>
             <div className={BookCss.inputbox}>
-              Guests and Rooms
+              Guests
               <div className={BookCss.inputsearch}>
-                <input
-                  type="text"
-                  className="input input-bordered input-warning w-full max-w-xs"
-                />
+                <div className={BookCss.dropdown}>
+                  <div
+                    onClick={handleCountClick}
+                    className={BookCss.dropdown_toggle}
+                  >
+                    <span className={BookCss.guestsCount}>{guests}</span>
+                  </div>
+                  {isOpenCount && (
+                    <div className={BookCss.dropdown_menu}>
+                      <div className={BookCss.dropdown_menudiv}>
+                        <div> Guests Pet </div>
+                        <button
+                          onClick={decrementGuests}
+                          className={BookCss.guestsButton}
+                        >
+                          -
+                        </button>
+                        <span className={BookCss.guestsCount}>{guests}</span>
+                        <button
+                          onClick={incrementGuests}
+                          className={BookCss.guestsButton}
+                        >
+                          +
+                        </button>{" "}
+                      </div>
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
             <button className="btn btn-accent">Search</button>

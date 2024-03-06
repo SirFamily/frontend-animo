@@ -1,28 +1,28 @@
 .container {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    height: auto;
-    animation: fadeIn 0.5s ease-in-out;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: auto;
+  animation: fadeIn 0.5s ease-in-out;
 
-  }
+}
 
-  
-.section1{
+
+.section1 {
   /* background-color: #e71304; */
-  width:  100%;
-  height:  70vh;
+  width: 100%;
+  height: 70vh;
   background-image: url("https://res.cloudinary.com/dlijacsdm/image/upload/f_auto,q_auto/fwn5vjuxw20pak2bf5ny");
-background-repeat: no-repeat;
-background-position: center;
-background-size: cover;
-padding: 20px;
-display: flex;
-align-items: flex-end;
-flex-direction: column-reverse;
-flex-wrap: wrap-reverse;
-gap: 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  padding: 20px;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column-reverse;
+  flex-wrap: wrap-reverse;
+  gap: 20px;
 
 }
 
@@ -32,17 +32,19 @@ gap: 20px;
   left: 50%;
   transform: translate(-50%, -50%); */
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   width: 100%;
-  gap: 0px 50px;
+  height: auto;
+  gap: 0px 120px;
   height: auto;
   background-color: #ffffff;
   border-radius: 10px;
-  padding: 20px;
+  /* padding: 20px; */
 }
-.word{
+
+.word {
   /* position: relative;
   top: 45%; 
   left: 50%;
@@ -53,7 +55,7 @@ gap: 20px;
 
 }
 
-.section2{
+.section2 {
   height: 50vw;
   width: 100%;
   /* background-color: #e71304;  */
@@ -63,85 +65,118 @@ gap: 20px;
 }
 
 
-  
 
+.inputbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
+  border-radius: 15px;
+  height: 100px;
 
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-  
-  .text {
-    font-size: 42px;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  .container_list {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 26px;
-    width: 76%;
-  }
-  
-  .card {
-    width: 270px;
-    height: auto;
-    cursor: pointer; 
-  }
-  
-  
-  .imghostpre {
-    border-radius: 17px;
-    margin-bottom: 6px;
-  }
-  
-  .texthost {
-    font-weight: bold;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
 
+  to {
+    opacity: 1;
+  }
+}
+
+.text {
+  font-size: 42px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.container_list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 26px;
+  width: 76%;
+}
+
+.card {
+  width: 270px;
+  height: auto;
+  cursor: pointer;
+}
 
 
-  .dropdown {
-    position: relative;
-    display: inline-block;
-  }
-  
-  .dropdown_toggle {
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 197px;
-    height: 36px;
-    background: #ffffff;
-    border-radius: 7px;
-  
-  }
+.imghostpre {
+  border-radius: 17px;
+  margin-bottom: 6px;
+}
 
-  .dropdown_menu {
-    position: absolute;
-    background-color: #cccccc;
-    border-radius: 5px;
-  
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-    padding: 0;
-    margin: 0;
-  }
+.texthost {
+  font-weight: bold;
+}
 
-  .dropdown_menuli {
-    padding: 10px 57px;
-  }
 
-  .date_input {
-    width: 100%;
-    padding: 8px;
-    margin: 4px 0;
-    box-sizing: border-box;
-  }
-  
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown_toggle {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 197px;
+  height: 36px;
+  background: #ffffff;
+  border-radius: 7px;
+
+}
+
+.dropdown_menu {
+  position: absolute;
+  background-color: #cccccc;
+  border-radius: 5px;
+
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 0;
+  margin: 0;
+}
+
+.dropdown_menuli {
+  padding: 10px 57px;
+}
+
+.dropdown_menudiv {
+  display: flex;
+  align-items: center;
+  padding: 10px 57px;
+
+}
+
+.date_input {
+  width: 100%;
+  padding: 8px;
+  margin: 4px 0;
+  box-sizing: border-box;
+}
+
+
+.guestsButton {
+  cursor: pointer;
+  background-color: #ffffff;
+  border: none;
+  border-radius: 50px;
+  margin: 0 5px;
+  padding: 5px 5px;
+  height: 35px;
+  width: 35px;
+}
+
+.guestsCount {
+  font-size: 16px;
+  font-weight: bold;
+}
