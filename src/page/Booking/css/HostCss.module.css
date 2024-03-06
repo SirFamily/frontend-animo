@@ -3,12 +3,69 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    padding-top: 90px;
     height: auto;
     animation: fadeIn 0.5s ease-in-out;
-    margin: 20px;
+
   }
+
   
+.section1{
+  /* background-color: #e71304; */
+  width:  100%;
+  height:  70vh;
+  background-image: url("https://res.cloudinary.com/dlijacsdm/image/upload/f_auto,q_auto/fwn5vjuxw20pak2bf5ny");
+background-repeat: no-repeat;
+background-position: center;
+background-size: cover;
+padding: 20px;
+display: flex;
+align-items: flex-end;
+flex-direction: column-reverse;
+flex-wrap: wrap-reverse;
+gap: 20px;
+
+}
+
+.searchbox {
+  /* position: relative;
+  top: 69%; 
+  left: 50%;
+  transform: translate(-50%, -50%); */
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 0px 50px;
+  height: auto;
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+}
+.word{
+  /* position: relative;
+  top: 45%; 
+  left: 50%;
+  transform: translate(-50%, -50%); */
+  color: #ffffff;
+  font-size: 3rem;
+  font-weight: bold;
+
+}
+
+.section2{
+  height: 50vw;
+  width: 100%;
+  /* background-color: #e71304;  */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+  
+
+
   @keyframes fadeIn {
     from {
       opacity: 0;
@@ -46,5 +103,45 @@
   
   .texthost {
     font-weight: bold;
+  }
+
+
+
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown_toggle {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 197px;
+    height: 36px;
+    background: #ffffff;
+    border-radius: 7px;
+  
+  }
+
+  .dropdown_menu {
+    position: absolute;
+    background-color: #cccccc;
+    border-radius: 5px;
+  
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 0;
+    margin: 0;
+  }
+
+  .dropdown_menuli {
+    padding: 10px 57px;
+  }
+
+  .date_input {
+    width: 100%;
+    padding: 8px;
+    margin: 4px 0;
+    box-sizing: border-box;
   }
   
