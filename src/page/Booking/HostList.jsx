@@ -99,13 +99,17 @@ export default function HostList() {
                     onClick={handleClick}
                     className={BookCss.dropdown_toggle}
                   >
-                    {checkInDate || checkOutDate ? (
+                    {checkInDate && checkOutDate ? (
                       <span>{`${formatDate(checkInDate)} to ${formatDate(
                         checkOutDate
                       )}`}</span>
                     ) : (
                       "Select Dates"
                     )}
+                    <img
+                      src="https://cdn-icons-png.flaticon.com/512/7996/7996254.png"
+                      className={BookCss.icondorp}
+                    />
                   </div>
                   {isOpen && (
                     <ul className={BookCss.dropdown_menu}>
@@ -143,7 +147,11 @@ export default function HostList() {
                     onClick={handleCountClick}
                     className={BookCss.dropdown_toggle}
                   >
-                    <span className={BookCss.guestsCount}>{guests}</span>
+                    <span className={BookCss.guestsCount}>Pet {guests}</span>
+                    <img
+                      src="https://cdn-icons-png.flaticon.com/512/7996/7996254.png"
+                      className={BookCss.icondorp}
+                    />
                   </div>
                   {isOpenCount && (
                     <div className={BookCss.dropdown_menu}>
