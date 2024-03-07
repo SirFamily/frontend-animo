@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import GridImagesCss from "./ModelCss/GridImagesCss.module.css";
-import ModelPopup from "./ModelPopup";
+import ModelPopup from "./ModelPopupImg";
 
 export default function ModelGridImages({ selectedImg, onClose }) {
   const [selectedImage, setSelectedImage] = useState(null);
