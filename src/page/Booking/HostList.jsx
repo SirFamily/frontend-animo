@@ -72,111 +72,119 @@ export default function HostList() {
       <div className={BookCss.container}>
         <div className={BookCss.section1}>
           <div className={BookCss.searchbox}>
-            <div className={BookCss.inputbox}>
-              Location
-              <div className={BookCss.inputsearch}>
-                <select
-                  value={selectedLocation}
-                  onChange={handleLocationChange}
-                  className={BookCss.dropdown_select}
-                >
-                  <option value="" disabled>
-                    Select Province
-                  </option>
-                  {thaiProvinces.map((province) => (
-                    <option key={province.id} value={province.name_en}>
-                      {province.name_th}
+            <div className={BookCss.searchbox2}>
+              <div className={BookCss.inputbox}>
+                Location
+                <div className={BookCss.inputsearch}>
+                  <select
+                    value={selectedLocation}
+                    onChange={handleLocationChange}
+                    className={BookCss.dropdown_toggle}
+                  >
+                    <option value="" disabled>
+                      Select Province
                     </option>
-                  ))}
-                </select>
-              </div>
-            </div>
-            <div className={BookCss.inputbox}>
-              Check-In and Check-Out
-              <div className={BookCss.inputsearch}>
-                <div className={BookCss.dropdown}>
-                  <div
-                    onClick={handleClick}
-                    className={BookCss.dropdown_toggle}
-                  >
-                    {checkInDate && checkOutDate ? (
-                      <span>{`${formatDate(checkInDate)} to ${formatDate(
-                        checkOutDate
-                      )}`}</span>
-                    ) : (
-                      "Select Dates"
-                    )}
-                    <img
-                      src="https://cdn-icons-png.flaticon.com/512/7996/7996254.png"
-                      className={BookCss.icondorp}
-                    />
-                  </div>
-                  {isOpen && (
-                    <ul className={BookCss.dropdown_menu}>
-                      <li className={BookCss.dropdown_menuli}>
-                        <input
-                          type="date"
-                          name="checkin"
-                          id="checkin"
-                          min={new Date().toISOString().split("T")[0]}
-                          className={BookCss.date_input}
-                          onChange={handleCheckInChange}
-                        />
-                      </li>
-                      <li className={BookCss.dropdown_menuli}>to</li>
-                      <li className={BookCss.dropdown_menuli}>
-                        <input
-                          type="date"
-                          name="checkout"
-                          id="checkout"
-                          min={new Date().toISOString().split("T")[0]}
-                          className={BookCss.date_input}
-                          onChange={handleCheckOutChange}
-                        />
-                      </li>
-                    </ul>
-                  )}
+                    {thaiProvinces.map((province) => (
+                      <option key={province.id} value={province.name_en}>
+                        {province.name_th}
+                      </option>
+                    ))}
+                  </select>
                 </div>
               </div>
-            </div>
-            <div className={BookCss.inputbox}>
-              Guests
-              <div className={BookCss.inputsearch}>
-                <div className={BookCss.dropdown}>
-                  <div
-                    onClick={handleCountClick}
-                    className={BookCss.dropdown_toggle}
-                  >
-                    <span className={BookCss.guestsCount}>Pet {guests}</span>
-                    <img
-                      src="https://cdn-icons-png.flaticon.com/512/7996/7996254.png"
-                      className={BookCss.icondorp}
-                    />
-                  </div>
-                  {isOpenCount && (
-                    <div className={BookCss.dropdown_menu}>
-                      <div className={BookCss.dropdown_menudiv}>
-                        <div> Guests Pet </div>
-                        <button
-                          onClick={decrementGuests}
-                          className={BookCss.guestsButton}
-                        >
-                          -
-                        </button>
-                        <span className={BookCss.guestsCount}>{guests}</span>
-                        <button
-                          onClick={incrementGuests}
-                          className={BookCss.guestsButton}
-                        >
-                          +
-                        </button>{" "}
-                      </div>
+              <hr className={BookCss.vertical_line} />
+              <div className={BookCss.inputbox}>
+                Check-In and Check-Out
+                <div className={BookCss.inputsearch}>
+                  <div className={BookCss.dropdown}>
+                    <div
+                      onClick={handleClick}
+                      className={BookCss.dropdown_toggle}
+                    >
+                      {checkInDate && checkOutDate ? (
+                        <span>{`${formatDate(checkInDate)} to ${formatDate(
+                          checkOutDate
+                        )}`}</span>
+                      ) : (
+                        "Select Dates"
+                      )}
+                      <img
+                        src="https://cdn-icons-png.flaticon.com/512/7996/7996254.png"
+                        className={BookCss.icondorp}
+                      />
                     </div>
-                  )}
+                    {isOpen && (
+                      <ul className={BookCss.dropdown_menu}>
+                        <li className={BookCss.dropdown_menuli}>
+                          <input
+                            type="date"
+                            name="checkin"
+                            id="checkin"
+                            min={new Date().toISOString().split("T")[0]}
+                            className={BookCss.date_input}
+                            onChange={handleCheckInChange}
+                          />
+                        </li>
+                        <li className={BookCss.dropdown_menuli}>to</li>
+                        <li className={BookCss.dropdown_menuli}>
+                          <input
+                            type="date"
+                            name="checkout"
+                            id="checkout"
+                            min={new Date().toISOString().split("T")[0]}
+                            className={BookCss.date_input}
+                            onChange={handleCheckOutChange}
+                          />
+                        </li>
+                      </ul>
+                    )}
+                  </div>
                 </div>
               </div>
+              <hr className={BookCss.vertical_line} />
+
+              <div className={BookCss.inputbox}>
+                Guests
+                <div className={BookCss.inputsearch}>
+                  <div className={BookCss.dropdown}>
+                    <div
+                      onClick={handleCountClick}
+                      className={BookCss.dropdown_toggle}
+                    >
+                      <span className={BookCss.guestsCount}>Pet {guests}</span>
+                      <img
+                        src="https://cdn-icons-png.flaticon.com/512/7996/7996254.png"
+                        className={BookCss.icondorp}
+                      />
+                    </div>
+                    {isOpenCount && (
+                      <div className={BookCss.dropdown_menu}>
+                        <div className={BookCss.dropdown_menudiv}>
+                          <div> Guests Pet </div>
+                          <button
+                            onClick={decrementGuests}
+                            className={BookCss.guestsButton}
+                          >
+                            -
+                          </button>
+                          <span className={BookCss.guestsCount}>{guests}</span>
+                          <button
+                            onClick={incrementGuests}
+                            className={BookCss.guestsButton}
+                          >
+                            +
+                          </button>{" "}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+                
+              </div>
+              <hr className={BookCss.vertical_line} />
+
+            <button className={BookCss.bt}>Search</button>
             </div>
-            <button className="btn btn-accent">Search</button>
           </div>
           <div className={BookCss.word}>Find out what's best for your pet.</div>
         </div>
