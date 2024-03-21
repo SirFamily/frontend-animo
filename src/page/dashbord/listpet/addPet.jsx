@@ -3,7 +3,7 @@ import ModelPopup from "../../../component/ModelPopup";
 import useAuth from "../../../hooks/useAuth";
 import AddPetCss from "./Css/AddPerCss.module.css";
 import axios from "axios";
-import defaultImageUrl from "../../../assets/picture.png"
+import defaultImageUrl from "../../../assets/picture.png";
 export default function AddPet({ onClose }) {
   const { user } = useAuth();
   const [imagePreview, setImagePreview] = useState(null);
@@ -83,8 +83,8 @@ export default function AddPet({ onClose }) {
           />
           <input
             type="file"
-              src=""
-              alt=""
+            src=""
+            alt=""
             accept="image/png,image/jpeg"
             onChange={hdlFileChange}
           />
@@ -99,6 +99,7 @@ export default function AddPet({ onClose }) {
               name="petName"
               value={input.petName}
               onChange={hdlChange}
+              className={AddPetCss.inputField}
               required
             />
 
@@ -108,6 +109,7 @@ export default function AddPet({ onClose }) {
               name="petType"
               value={input.petType}
               onChange={hdlChange}
+              className={AddPetCss.inputField}
             />
 
             <input
@@ -116,6 +118,7 @@ export default function AddPet({ onClose }) {
               name="birthDate"
               value={input.birthDate}
               onChange={hdlChange}
+              className={AddPetCss.inputField}
             />
 
             <input
@@ -124,6 +127,7 @@ export default function AddPet({ onClose }) {
               name="weight"
               value={input.weight}
               onChange={hdlChange}
+              className={AddPetCss.inputField}
             />
 
             <input
@@ -132,6 +136,7 @@ export default function AddPet({ onClose }) {
               name="height"
               value={input.height}
               onChange={hdlChange}
+              className={AddPetCss.inputField}
             />
 
             <input
@@ -140,6 +145,7 @@ export default function AddPet({ onClose }) {
               name="color"
               value={input.color}
               onChange={hdlChange}
+              className={AddPetCss.inputField}
             />
 
             <input
@@ -148,6 +154,7 @@ export default function AddPet({ onClose }) {
               name="gender"
               value={input.gender}
               onChange={hdlChange}
+              className={AddPetCss.inputField}
             />
 
             <input
@@ -156,10 +163,21 @@ export default function AddPet({ onClose }) {
               name="healthStatus"
               value={input.healthStatus}
               onChange={hdlChange}
+              className={AddPetCss.inputField}
             />
-            <div>
-              <button className={AddPetCss.btb}>Add</button>
-              <button className={AddPetCss.btc} onClick={onClose}>Close</button>
+            <div className={AddPetCss.buttons}>
+              <button
+                className={`${AddPetCss.button} ${AddPetCss.primary}`}
+                type="submit"
+              >
+                Add
+              </button>
+              <button
+                className={`${AddPetCss.button} ${AddPetCss.secondary}`}
+                onClick={onClose}
+              >
+                Close
+              </button>
             </div>
           </form>
         </div>

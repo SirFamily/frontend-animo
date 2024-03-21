@@ -1,27 +1,34 @@
 .container {
-    width: 390px;
-    height: auto;
-
-    
+    width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
 
-.text{
+.text {
     font-size: 30px;
     font-weight: bolder;
     text-align: center;
 }
 
 
-.form{
+.form {
     display: flex;
-    flex-direction:  column;
+    flex-direction: column;
     padding: 20px;
 }
 
-.imagePreview{
-    width: 390px;
-    height: 252px;
+.imagePreview {
+    width: 100%;
+    height: 250px;
     object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    ;
 
 }
 
@@ -36,12 +43,19 @@
     background: #e71304;
     color: #ffffff;
     transition: background-color 0.3s ease-in-out;
-font-weight: 400;
-margin: 10px 0px 10px 0px;
+    font-weight: 400;
+    margin: 10px 0px 10px 0px;
 }
 
+.inputField {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
 
-.btc:hover{
+.btc:hover {
     background-color: #fc9292;
     color: #000000;
 
@@ -58,13 +72,50 @@ margin: 10px 0px 10px 0px;
     background: #62b800;
     color: #ffffff;
     transition: background-color 0.3s ease-in-out;
-font-weight: 400;
-margin: 10px 0px 10px 0px;
+    font-weight: 400;
+    margin: 10px 0px 10px 0px;
 }
 
 
-.btb:hover{
+.btb:hover {
     background-color: #9eff91;
     color: #007022;
 
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.button.primary {
+    background-color: #62b800;
+    color: #ffffff;
+}
+
+.button.secondary {
+    background-color: #e71304;
+    color: #ffffff;
+}
+
+.button:hover {
+    opacity: 0.9;
+}
+
+.button.secondary:hover {
+    background-color: #fc9292;
+}
+
+.button.primary:hover {
+    background-color: #92fca4;
 }
