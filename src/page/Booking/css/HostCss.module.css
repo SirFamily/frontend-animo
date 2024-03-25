@@ -87,34 +87,37 @@
   flex-direction: column;
   /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
   border-radius: 15px;
-  height: 100px;
+  height: auto;
   width: 100%;
-transition: ease  300ms;
-cursor: pointer;
+  transition: ease 300ms;
+  cursor: pointer;
+  padding: 15px;
 }
 
-.bt  {
+.bt {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
-  background-color: #A4D9E0 ;
-  border-radius: 0px 55px  55px 0px;
-  height: 100px;
+  background-color: #A4D9E0;
+  border-radius: 0px 55px 55px 0px;
+  height: 100%;
   width: 30%;
-transition: ease  300ms;
-cursor: pointer;
+  transition: ease 300ms;
+  cursor: pointer;
+  padding: 30px;
+
 }
 
-.bt:hover{
- border-radius: 55px;
+.bt:hover {
+  border-radius: 55px;
 }
 
 .inputbox:hover {
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-background-color: #f0f0f0;
-border-radius: 55px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  background-color: #f0f0f0;
+  border-radius: 55px;
 
 }
 
@@ -199,7 +202,7 @@ border-radius: 55px;
   align-items: center;
   width: 300px;
   padding: 10px 20px;
-/* background-color: aqua; */
+  /* background-color: aqua; */
 }
 
 .date_input {
@@ -226,13 +229,16 @@ border-radius: 55px;
   font-weight: bold;
 }
 
-.icondorp{
+.icondorp {
   width: 15px;
   height: 15px;
 }
 
 .vertical_line {
-  border-left: 1px solid #c4c4c4; /* สีของเส้นแนวตั้ง */
-  height: 100px; /* ความสูงของเส้นแนวตั้ง */
-  margin: 0; /* ลบ margin ที่ถูกกำหนดไว้โดยอัตโนมัติ */
+  border-left: 1px solid #c4c4c4;
+  /* สีของเส้นแนวตั้ง */
+  height: 40px;
+  /* ความสูงของเส้นแนวตั้ง */
+  margin: 0;
+  /* ลบ margin ที่ถูกกำหนดไว้โดยอัตโนมัติ */
 }

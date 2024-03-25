@@ -47,8 +47,13 @@ export default function HostDetailForBooking({ onClose, selectedHost }) {
           <div className={HostDetailCss.incontainer}>
             <div>
               <div>
-                <div className={HostDetailCss.bigtext} >
-                  <img src="https://cdn-icons.flaticon.com/svg/3916/3916852.svg?token=exp=1709812807~hmac=26f242967cccbaf9f6ac395ba55ed52b" className={HostDetailCss.imgiconback} onClick={onClose}/> {selectedHost.hostName}
+                <div className={HostDetailCss.bigtext}>
+                  <img
+                    src="https://cdn-icons-png.flaticon.com/512/507/507257.png"
+                    className={HostDetailCss.imgiconback}
+                    onClick={onClose}
+                  />{" "}
+                  {selectedHost.hostName}
                 </div>
               </div>
               <div

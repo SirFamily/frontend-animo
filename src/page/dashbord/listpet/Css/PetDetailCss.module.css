@@ -1,37 +1,37 @@
-.container{
+.container {
     width: 390px;
-height: auto;
+    height: auto;
 
 }
 
-.container_info{
-padding: 10px 10px 10px 50px ;
+.container_info {
+    padding: 10px 10px 10px 50px;
 }
 
-.petImage{
-    border-radius: 20px 20px 0px 0px; 
+.petImage {
+    border-radius: 20px 20px 0px 0px;
     width: 390px;
     height: 252px;
-   object-fit: cover;
+    object-fit: cover;
 }
 
-.textname{
-    font-size:  34px;
+.textname {
+    font-size: 34px;
     font-weight: bolder;
     color: #276972;
-    width:  100%;
+    width: 100%;
 }
 
-.container_flex{
-    display: flex; 
+.container_flex {
+    display: flex;
     gap: 20px;
 }
 
 .text {
-    font-size:  21px;
+    font-size: 21px;
 }
 
-.hightext{
+.hightext {
     font-weight: bolder;
     color: #23707a;
 }
@@ -47,12 +47,12 @@ padding: 10px 10px 10px 50px ;
     background: #e71304;
     color: #ffffff;
     transition: background-color 0.3s ease-in-out;
-font-weight: 400;
-margin: 10px 0px 10px 0px;
+    font-weight: 400;
+    margin: 10px 0px 10px 0px;
 }
 
 
-.btc:hover{
+.btc:hover {
     background-color: #fc9292;
     color: #000000;
 
@@ -69,12 +69,12 @@ margin: 10px 0px 10px 0px;
     background: #62b800;
     color: #ffffff;
     transition: background-color 0.3s ease-in-out;
-font-weight: 400;
-margin: 10px 0px 10px 0px;
+    font-weight: 400;
+    margin: 10px 0px 10px 0px;
 }
 
 
-.btb:hover{
+.btb:hover {
     background-color: #9eff91;
     color: #007022;
 
@@ -91,12 +91,12 @@ margin: 10px 0px 10px 0px;
     background: #ffa600;
     color: #7a6400;
     transition: background-color 0.3s ease-in-out;
-font-weight: 400;
-margin: 10px 0px 10px 0px;
+    font-weight: 400;
+    margin: 10px 0px 10px 0px;
 }
 
 
-.btb:hover{
+.btb:hover {
     background-color: #ffe291;
     color: #706e00;
 
